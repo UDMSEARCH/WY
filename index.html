@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中汽出海 - 专注沙特高端二手车 | China Auto Export KSA</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&family=Inter:wght@300;400;700&display=swap');
+
+    :root {
+      --ksa-green: #006C35;
+      --gold: #D4AF37;
+      --navy: #0A1D37;
+
+      /* Brand Green (WhatsApp tone) */
+      --wa-green: #25D366;
+      --wa-green-hover: #1EBE5D;
+
+      /* Price color (refined warm) */
+      --price-color: #E0B341;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .hero-section {
+      background: linear-gradient(rgba(10, 29, 55, 0.7), rgba(10, 29, 55, 0.7)),
+        url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hidden-page {
+      display: none !important;
+    }
+
+    .rtl {
+      direction: rtl;
+    }
+
+    .btn-active:active {
+      transform: scale(0.95);
+      transition: transform 0.1s;
+    }
+
+    /* 画布预览里 Tailwind 的 @apply 可能无法被处理，这里用普通 CSS 重写一遍 */
+    .admin-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #d1d5db;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      outline: none;
+      background: #fff;
+      transition: all 0.2s;
+    }
+
+    .admin-input:focus {
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.7);
+      border-color: rgba(59, 130, 246, 0.9);
+    }
+
+    .admin-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .paste-area {
+      width: 100%;
+      padding: 1.5rem;
+      border: 2px dashed #d1d5db;
+      border-radius: 0.75rem;
+      background: #f9fafb;
+      color: #9ca3af;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 1rem;
+    }
+
+    .paste-area:hover {
+      background: #eff6ff;
+      border-color: #60a5fa;
+      color: #6b7280;
+    }
+
+    .img-preview-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .img-card {
+      position: relative;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+      background: #fff;
+      flex: 0 0 auto;
+    }
+
+    .img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .img-delete {
+      position: absolute;
+      top: 0.25rem;
+      right: 0.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 9999px;
+      background: #ef4444;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-weight: 700;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .img-delete:hover {
+      background: #dc2626;
+    }
+
+    /* 用 CSS 变量补一个 gold 文本色 */
+    .text-gold { color: var(--gold); }
+    .bg-gold { background: var(--gold); }
+
+    /* Unified WhatsApp Green */
+    .wa-btn {
+      background: var(--wa-green);
+      color: #fff;
+    }
+    .wa-btn:hover {
+      background: var(--wa-green-hover);
+    }
+
+    /* Circular WhatsApp button + green glow shadow */
+    .wa-fab {
+            background: #1DB954; /* 更绿，接近软件视觉 */
+            color: #ffffff;
+        }
+        .wa-fab:hover { filter: brightness(0.95); }
+        .wa-fab-shadow { box-shadow: 0 14px 28px rgba(29,185,84,0.35); }
+    .wa-fab:hover {
+      background: var(--wa-green-hover);
+    }
+    .wa-fab-shadow {
+      box-shadow: 0 18px 36px rgba(37, 211, 102, 0.38), 0 10px 20px rgba(0, 0, 0, 0.16);
+    }
+
+    .price-text {
+      color: var(--price-color);
+    }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- 顶部公告 -->
+  <div class="bg-yellow-500 text-white py-2 text-center text-sm font-bold">
+    <i class="fas fa-certificate mr-2"></i> 郑重承诺：车况不符，严格执行 20% 赔付标准 | Verified SGS Inspection
+  </div>
+
+  <!-- 导航栏 -->
+  <nav id="main-nav" class="bg-white/90 sticky top-0 z-50 border-b border-gray-100 backdrop-blur-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2 cursor-pointer" onclick="navigateTo('home')">
+        <div class="w-10 h-10 bg-blue-900 flex items-center justify-center rounded-lg">
+          <i class="fas fa-car-side text-white"></i>
+        </div>
+        <span class="text-xl font-black text-blue-900 tracking-tighter">中汽<span class="text-gold">出海</span></span>
+      </div>
+
+      <div class="hidden md:flex space-x-8 text-sm font-bold text-gray-700 uppercase tracking-widest items-center">
+        <a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-blue-900 transition">主页</a>
+        <a href="javascript:void(0)" onclick="navigateTo('inventory')" class="hover:text-blue-900 transition">现车库存</a>
+        <a href="#trust" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition">信任保障</a>
+        <a href="#service" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition">出口服务</a>
+        <a href="#partner" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition">战略合作</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <select class="bg-gray-100 border-none rounded px-2 py-1 text-xs font-bold">
+          <option>中文 (CN)</option>
+          <option>English (EN)</option>
+          <option>العربية (AR)</option>
+        </select>
+        <a href="https://wa.me/8617600906021" class="wa-btn text-white px-5 py-2 rounded-full text-sm font-bold hover:shadow-lg btn-active transition flex items-center">
+          <i class="fab fa-whatsapp mr-2 text-lg"></i> 联系我们
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主页内容 -->
+  <main id="home-page" class="page-content">
+    <!-- Hero Section -->
+    <header class="hero-section min-h-[85vh] flex items-center text-white relative pb-32">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl text-left">
+          <span class="inline-block bg-gold text-white px-3 py-1 rounded text-xs font-bold mb-4 uppercase tracking-widest">沙特市场首选供应商</span>
+          <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                        <span id="hero-line1"></span><br><span id="hero-line2" class="text-gold"></span>
+                    </h1>
+          <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed font-light">
+            专注中国新能源及燃油二手车出口。SGS 全车检测，20% 差额赔付，提供从采购、整备到清关的一站式解决方案。
+          </p>
+          <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mb-12">
+            <a href="javascript:void(0)" onclick="navigateTo('inventory')" class="bg-blue-900 text-white px-10 py-4 rounded-xl font-bold text-center hover:bg-blue-800 transition shadow-xl border border-blue-700/50 btn-active">
+              浏览现车库
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-[-50px] left-0 right-0 hidden lg:block">
+        <div class="container mx-auto px-6">
+          <div class="grid grid-cols-4 gap-4 text-left">
+            <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
+              <i class="fas fa-shield-check text-3xl text-gold"></i>
+              <div>
+                <h4 class="font-bold text-blue-900">20% 赔付承诺</h4>
+                <p class="text-xs text-gray-500">检测不符立即赔付</p>
+              </div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
+              <i class="fas fa-file-contract text-3xl text-gold"></i>
+              <div>
+                <h4 class="font-bold text-blue-900">SGS 联名报告</h4>
+                <p class="text-xs text-gray-500">第三方客观检测</p>
+              </div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
+              <i class="fas fa-snowflake text-3xl text-gold"></i>
+              <div>
+                <h4 class="font-bold text-blue-900">中东气候整备</h4>
+                <p class="text-xs text-gray-500">空调制冷系统强化</p>
+              </div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
+              <i class="fas fa-ship text-3xl text-gold"></i>
+              <div>
+                <h4 class="font-bold text-blue-900">清关手续全包</h4>
+                <p class="text-xs text-gray-500">沙特各大港口直通</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 现车展示 Section -->
+    <section id="inventory-section" class="pt-32 pb-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <!-- 寻车需求引导 -->
+        <div class="mb-16 bg-white border border-blue-50 rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between shadow-lg ring-1 ring-blue-100">
+          <div class="text-left mb-6 md:mb-0">
+            <h3 class="text-2xl font-black text-blue-900 mb-2">一站式解决各品牌新车/二手车低价车源</h3>
+            <p class="text-gray-600 max-w-xl">依托强大的供应链能力与深厚的行业积累，我们为您提供全品牌精准寻车、实时比价及全流程出口整备，助您锁定极具价格竞争力的优质车源。</p>
+          </div>
+          <a href="https://wa.me/8617600906021?text=Hi, I am looking for a specific car model with best price..." class="wa-btn text-white px-10 py-5 rounded-2xl font-black shadow-xl hover:shadow-2xl transition btn-active flex items-center shrink-0">
+            <i class="fab fa-whatsapp mr-3 text-2xl"></i> 咨询车型报价
+          </a>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 text-left">
+          <div>
+            <h2 class="text-4xl font-extrabold text-blue-900">爆款车型</h2>
+            <p class="text-gray-500 mt-2 italic font-serif text-lg">Export-ready vehicles with localized specs</p>
+          </div>
+          <div class="mt-6 md:mt-0 flex space-x-4">
+            <button onclick="navigateTo('inventory')" class="px-6 py-2 bg-blue-900 text-white rounded-lg text-sm font-bold shadow-md hover:bg-blue-800 transition btn-active">更多车型 <i class="fas fa-arrow-right ml-2"></i></button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" id="featured-grid"></div>
+      </div>
+    </section>
+
+    <!-- 信任保障详情 Section -->
+    <section id="trust" class="py-24 bg-blue-900 text-white">
+      <div class="container mx-auto px-6 text-left">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-4xl font-extrabold mb-8 text-gold uppercase italic">The Trust Protocol <br />信任协议书</h2>
+            <div class="space-y-8">
+              <div class="flex items-start space-x-6">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-gold font-bold">01</span>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold mb-2">20% 赔付惩罚机制</h4>
+                  <p class="text-gray-400">如果我们提供的 SGS 检测报告与您的最终检车结果在“重大事故、火烧、泡水”上存在偏差，我们承诺按成交价的 20% 现汇赔付，并全额退款退车。</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-6">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-gold font-bold">02</span>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold mb-2">透明供应链实录</h4>
+                  <p class="text-gray-400">客户可通过 WhatsApp 实时接收车辆从“装柜、离港、在途、清关”的所有单据照片 and 视频录影。</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-6">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-gold font-bold">03</span>
+                </div>
+                <div>
+                  <h4 class="text-xl font-bold mb-2">沙特本地化技术优化</h4>
+                  <p class="text-gray-400">针对中东 50°C+ 的高温环境，我们对每一台车进行空调冷凝器清洗、防紫外线隔热膜贴膜及易损塑料件加固。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-10 rounded-3xl text-gray-900 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-[-20px] right-[-20px] w-40 h-40 bg-gold/10 rounded-full blur-3xl"></div>
+            <img src="https://images.unsplash.com/photo-1600880212319-4a02476b701d?auto=format&fit=crop&w=800&q=80" class="rounded-2xl mb-6 shadow-lg w-full" alt="商务协作" />
+            <h3 class="text-2xl font-bold mb-4">为什么信任我们？</h3>
+            <p class="text-gray-600 mb-6 italic leading-relaxed">"在跨境交易中，信任是比金子更贵的资产。我们不是在卖车，而是在沙特建立一个长期可信赖的汽车供应链枢纽。"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 出口服务 -->
+    <section id="service" class="py-24 bg-white">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-extrabold text-blue-900 mb-4 text-center">出口流程一站式服务</h2>
+        <div class="grid md:grid-cols-4 gap-8 mt-16 text-center">
+          <div class="p-8 border rounded-3xl"><i class="fas fa-search-dollar text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">全市场采购</h4></div>
+          <div class="p-8 border rounded-3xl"><i class="fas fa-tools text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">高温定制整备</h4></div>
+          <div class="p-8 border rounded-3xl"><i class="fas fa-file-invoice-dollar text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">清关手续代办</h4></div>
+          <div class="p-8 border rounded-3xl"><i class="fas fa-truck-loading text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">多式联运直达</h4></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 沙特客户见证 -->
+    <section id="testimonials-section" class="py-24 bg-slate-50 border-t border-slate-200">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-black text-blue-900 mb-4 text-center">沙特客户见证</h2>
+        <p class="text-slate-400 mb-16 uppercase tracking-widest text-xs font-bold text-center">Social Proof From Riyadh to Jeddah</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="testimonials-grid"></div>
+      </div>
+    </section>
+
+    <!-- 战略合作 -->
+    <section id="partner" class="py-24 bg-gray-50 border-t border-gray-100 text-left">
+      <div class="container mx-auto px-6">
+        <div class="bg-blue-900 rounded-[40px] p-12 md:p-20 text-white flex flex-col md:flex-row items-center justify-between shadow-2xl overflow-hidden relative">
+          <div class="absolute left-0 bottom-0 opacity-10"><i class="fas fa-handshake text-[20rem]"></i></div>
+          <div class="relative z-10 max-w-xl text-left">
+            <h2 class="text-4xl font-extrabold mb-6">寻求长期战略合作伙伴</h2>
+            <p class="text-blue-200 text-lg mb-8 leading-relaxed text-left">我们正在寻找致力于深耕沙特市场的长期合作伙伴。无论您是拥有本地展厅资源、清关优势，还是具备成熟的售后服务网络，我们都期待与您建立互信、共赢的供应对接机制，共同定义中沙二手车贸易的新标准。</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="https://wa.me/8617600906021" class="bg-gold hover:bg-yellow-600 text-blue-900 px-10 py-4 rounded-full font-bold transition flex items-center btn-active">
+                <i class="fab fa-whatsapp mr-2 text-xl"></i> 开启合作洽谈
+              </a>
+            </div>
+          </div>
+          <div class="mt-12 md:mt-0 relative z-10 bg-white p-10 rounded-3xl text-gray-900 w-full md:w-96 shadow-xl text-center">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fab fa-whatsapp text-4xl"></i></div>
+            <h4 class="text-xl font-bold mb-2">即时对接洽谈</h4>
+            <p class="text-gray-500 text-sm mb-8 leading-relaxed">点击下方按钮，直接通过 WhatsApp 与我们的海外市场负责人取得联系，获取最新价格单及合作协议。</p>
+            <a href="https://wa.me/8617600906021" class="block w-full wa-btn text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl transition tracking-wide btn-active">WhatsApp 在线联系</a>
+            <p class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest font-bold">Response within 2 hours</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 现车库存页面 -->
+  <main id="inventory-page" class="page-content hidden-page pt-20 pb-32">
+    <div class="container mx-auto px-6 text-left">
+      <div class="mb-12 text-left">
+        <h2 class="text-4xl font-extrabold text-blue-900">所有现车库存</h2>
+        <p class="text-gray-500 mt-2 uppercase tracking-widest text-sm font-bold">Live Inventory - Available for Immediate Export</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="all-inventory-grid"></div>
+    </div>
+  </main>
+
+  <!-- 车辆详情页面 -->
+  <main id="car-detail-page" class="page-content hidden-page pt-10 pb-32">
+    <div class="container mx-auto px-6 text-left">
+      <button onclick="navigateTo('inventory')" class="mb-8 text-blue-900 font-bold flex items-center hover:text-gold transition"><i class="fas fa-arrow-left mr-2"></i> 返回库存列表</button>
+      <div id="car-detail-content"></div>
+    </div>
+  </main>
+
+  <!-- 客户见证详情页面 -->
+  <main id="testimonial-detail-page" class="page-content hidden-page pt-10 pb-32">
+    <div class="container mx-auto px-6 text-left">
+      <button onclick="navigateTo('home')" class="mb-8 text-blue-900 font-bold flex items-center hover:text-gold transition"><i class="fas fa-arrow-left mr-2"></i> 返回首页</button>
+      <div id="testimonial-detail-content"></div>
+    </div>
+  </main>
+
+  <!-- 后台管理页面 -->
+  <main id="admin-page" class="page-content hidden-page pt-10 pb-32 bg-gray-100 min-h-screen text-left">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center mb-10">
+        <h1 class="text-3xl font-black text-blue-900 underline decoration-gold decoration-4">中汽出海 - 管理后台</h1>
+        <div class="flex items-center gap-3">
+          <button onclick="exportStaticSnippet()" class="bg-blue-900 text-white px-5 py-2 rounded-xl font-bold hover:bg-blue-800">导出到 GitHub</button>
+          <button onclick="clearLocalDraft()" class="bg-white text-gray-800 px-5 py-2 rounded-xl font-bold border hover:bg-gray-50">清空本地草稿</button>
+          <button onclick="navigateTo('home')" class="bg-gray-800 text-white px-6 py-2 rounded-xl font-bold">退出后台</button>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-8">
+        <div class="md:col-span-3 space-y-2">
+          <button onclick="switchAdminTab('cars')" id="tab-cars" class="w-full text-left p-4 rounded-xl font-bold bg-blue-900 text-white shadow-lg">车型管理</button>
+          <button onclick="switchAdminTab('testimonials')" id="tab-testimonials" class="w-full text-left p-4 rounded-xl font-bold bg-white text-gray-700 hover:bg-gray-200 transition">客户见证管理</button>
+        </div>
+
+        <div class="md:col-span-9 bg-white p-8 rounded-[2rem] shadow-xl border border-gray-200">
+          <div id="admin-cars-panel">
+            <div class="flex justify-between items-center mb-6">
+              <h3 class="text-xl font-bold">车辆信息维护</h3>
+              <button onclick="openCarModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-plus mr-2"></i>新增车型</button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm">
+                <thead class="bg-gray-50 border-b">
+                  <tr><th class="p-4">车型名称</th><th class="p-4">价格</th><th class="p-4">里程</th><th class="p-4">操作</th></tr>
+                </thead>
+                <tbody id="admin-cars-list"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="admin-testimonials-panel" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+              <h3 class="text-xl font-bold">客户见证维护</h3>
+              <button onclick="openTestimonialModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-plus mr-2"></i>新增见证</button>
+            </div>
+            <div id="admin-testimonials-list" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 全屏图片查看器 -->
+  <div id="image-viewer" class="fixed inset-0 z-[300] bg-black/90 hidden items-center justify-center">
+    <button onclick="closeImageViewer()" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 z-[310]">&times;</button>
+    <button onclick="prevImage()" class="absolute left-6 text-white text-4xl hover:text-gray-300 z-[310] p-4"><i class="fas fa-chevron-left"></i></button>
+    <img id="viewer-img" src="" class="max-h-[90vh] max-w-[90vw] object-contain select-none" />
+    <button onclick="nextImage()" class="absolute right-6 text-white text-4xl hover:text-gray-300 z-[310] p-4"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <!-- 车型编辑弹窗 -->
+  <div id="car-modal" class="fixed inset-0 bg-black/50 z-[200] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-[2.5rem] w-full max-w-4xl max-h-[90vh] overflow-y-auto p-10 shadow-2xl">
+      <h2 class="text-2xl font-bold mb-6 text-blue-900">编辑车型信息</h2>
+      <form id="car-form" class="grid md:grid-cols-2 gap-x-6 text-left">
+        <input type="hidden" id="car-id" />
+        <div class="md:col-span-2">
+          <label class="admin-label">车型名称</label>
+          <input type="text" id="car-name" class="admin-input" required />
+        </div>
+        <div>
+          <label class="admin-label">价格 (USD)</label>
+          <input type="number" id="car-price" class="admin-input" required />
+        </div>
+        <div>
+          <label class="admin-label">里程</label>
+          <input type="text" id="car-mileage" class="admin-input" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="admin-label">动力类型</label>
+          <input type="text" id="car-power" class="admin-input" />
+        </div>
+        <div class="md:col-span-2 mb-4">
+          <label class="admin-label">主图 (点击虚线框 Ctrl+V 粘贴)</label>
+          <div id="main-img-zone" class="paste-area p-img-paste" tabindex="0">
+            <span class="text-xs text-gray-400">点击此处粘贴图片</span>
+          </div>
+        </div>
+        <div class="md:col-span-2 mb-4">
+          <label class="admin-label">详情图集 (支持连续粘贴)</label>
+          <div id="gallery-img-zone" class="paste-area p-img-paste" tabindex="0">
+            <span class="text-xs text-gray-400">点击此处粘贴多张图片</span>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <label class="admin-label">车型详情描述</label>
+          <textarea id="car-desc" class="admin-input" style="height: 8rem"></textarea>
+        </div>
+        <div class="md:col-span-2 flex justify-end space-x-4 pt-6 border-t">
+          <button type="button" onclick="closeModal('car-modal')" class="px-8 py-3 border rounded-xl font-bold">取消</button>
+          <button type="submit" class="px-10 py-3 bg-blue-900 text-white rounded-xl font-bold shadow-lg">保存信息</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 客户见证编辑弹窗 -->
+  <div id="testimonial-modal" class="fixed inset-0 bg-black/50 z-[200] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 shadow-2xl">
+      <h2 class="text-2xl font-bold mb-6">编辑客户见证</h2>
+      <form id="testimonial-form" class="text-left">
+        <input type="hidden" id="test-id" />
+        <label class="admin-label">标题</label>
+        <input type="text" id="test-title" class="admin-input" required />
+        <label class="admin-label">日期/地点</label>
+        <input type="text" id="test-meta" class="admin-input" />
+
+        <label class="admin-label">封面图 (Ctrl+V 粘贴)</label>
+        <div id="test-img-zone" class="paste-area p-img-paste" tabindex="0">
+          <span class="text-xs text-gray-400">点击此处粘贴图片</span>
+        </div>
+
+        <label class="admin-label">详情图集 (支持连续粘贴)</label>
+        <div id="test-gallery-zone" class="paste-area p-img-paste" tabindex="0">
+          <span class="text-xs text-gray-400">点击此处粘贴多张图片</span>
+        </div>
+
+        <label class="admin-label">见证内容</label>
+        <textarea id="test-content" class="admin-input" style="height: 8rem"></textarea>
+        <div class="flex justify-end space-x-4 pt-4 border-t">
+          <button type="button" onclick="closeModal('testimonial-modal')" class="px-6 py-2 border rounded-xl font-bold">取消</button>
+          <button type="submit" class="px-8 py-2 bg-green-600 text-white rounded-xl font-bold shadow-lg">保存见证</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="main-footer" class="bg-white pt-20 pb-10 border-t border-gray-100 text-gray-900 text-left">
+    <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 text-sm text-gray-400">
+      <div>
+        <div class="flex items-center space-x-2 mb-6">
+          <div class="w-8 h-8 bg-blue-900 flex items-center justify-center rounded-lg">
+            <i class="fas fa-car-side text-white text-xs"></i>
+          </div>
+          <span class="text-lg font-black text-blue-900 tracking-tighter uppercase">ChinaAutoExport</span>
+        </div>
+        <p>致力于将中国高性价比的二手汽车出口至沙特阿拉伯，并提供最真实的车况担保。</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-6 text-blue-900">核心链接</h4>
+        <ul class="space-y-4 text-sm text-gray-500 font-medium">
+          <li><a href="javascript:void(0)" onclick="navigateTo('inventory')" class="hover:text-gold transition">现车库存</a></li>
+          <li><a href="#service" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-gold transition">出口流程</a></li>
+          <li><a href="#trust" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-gold transition">信任保障</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-6 text-blue-900">官方办事处</h4>
+        <ul class="space-y-4 text-sm text-gray-500 font-medium">
+          <li><i class="fas fa-map-marker-alt mr-2 text-gold"></i> 中国·广州市天河区珠江新城中信大厦</li>
+          <li><i class="fas fa-map-marker-alt mr-2 text-gold"></i> 沙特·利雅得 Olaya 商务区</li>
+          <li><i class="fas fa-envelope mr-2 text-gold"></i> yuren.chen.ccc@gmail.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-6 text-blue-900">关注我们</h4>
+        <div class="flex space-x-4 mb-8">
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gold hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gold hover:text-white transition"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/8617600906021" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gold hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto px-6 mt-20 pt-8 border-t border-gray-50 text-center text-gray-400 text-[10px] uppercase tracking-widest font-bold">
+      © 2024 中汽出海贸易（深圳）有限公司 | China Auto Export Trade Co., Ltd.
+    </div>
+  </footer>
+
+  <a id="whatsapp-float" href="https://wa.me/8617600906021" class="fixed bottom-8 right-8 wa-fab wa-fab-shadow text-white w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 btn-active transition z-[100]">
+    <i class="fab fa-whatsapp text-3xl"></i>
+  </a>
+
+  <!-- Supabase JS (PostgreSQL 数据库 + Storage 存储) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    // =========================
+    // Supabase 配置（填你自己的）
+    // =========================
+    // 重要：如果你只是纯展示，不填也没关系，会自动使用 DEFAULT_* + localStorage（本地存储）数据。
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    const STORAGE_BUCKET = 'YOUR_STORAGE_BUCKET'; // 例如："images"
+
+    const DEFAULT_CARS = [
+      {
+        id: 'car_1',
+        name: '2023 比亚迪 宋 Plus EV',
+        price: 27800,
+        port: 'CIF Jeddah',
+        mileage: '800 KM',
+        power: '505 KM续航',
+        image: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=800&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=800',
+          'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800'
+        ],
+        desc: '本款比亚迪宋Plus EV是专门针对中东高温环境筛选的准新车，已完成SGS认证。'
+      },
+      {
+        id: 'car_2',
+        name: '2021 丰田 陆地巡洋舰 300',
+        price: 85000,
+        port: 'Dammam Port',
+        mileage: '12,000 KM',
+        power: '3.5T V6',
+        image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80',
+        gallery: [],
+        desc: '经典越野之王，专门针对沙特沙漠环境整备，车况极佳。'
+      }
+    ];
+
+    const DEFAULT_TESTIMONIALS = [
+      {
+        id: 'test_1',
+        title: '利雅得交付｜陆巡 300 现场验车 + 交接',
+        meta: 'Riyadh · 2024-11',
+        image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1200',
+        gallery: [
+          'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200',
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200'
+        ],
+        content: `客户在沙特本地安排第三方技师到场验车，并对底盘、发动机工况、漆面厚度及内饰磨损进行逐项核对。
+
+我们同步提供：
+- 出口前整备记录（含空调制冷强化、易损件更换）
+- 装柜照片 + 封条号
+- 海运提单与到港时间节点
+
+验车结果与出具的检测结论一致，客户当场确认交付并进入后续长期采购沟通。`
+      },
+      {
+        id: 'test_2',
+        title: '吉达清关完成｜新能源车到港全流程单据回传',
+        meta: 'Jeddah · 2024-08',
+        image: 'https://images.unsplash.com/photo-1517524006129-478249f50718?w=1200',
+        gallery: ['https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1200'],
+        content: `客户关注点是“到港后清关是否顺畅、是否会出现额外费用”。
+
+我们在关键节点向客户回传：
+- 装柜/离港/在途/到港状态截图
+- 清关所需文件扫描件
+- 码头提箱与交车照片
+
+最终按预期时间完成提车，客户对流程透明度非常认可。`
+      },
+      {
+        id: 'test_3',
+        title: 'SGS 检测流程记录｜漆面/事故/泡水项目逐项核验',
+        meta: 'Shenzhen · 2024-06',
+        image: 'https://images.unsplash.com/photo-1486006396113-c7b36766558b?w=1200',
+        gallery: [
+          'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1200',
+          'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1200'
+        ],
+        content: `客户要求“重大事故/火烧/泡水”必须可追溯、可对照。
+
+我们展示了检测时的关键动作：
+- VIN/铭牌信息确认
+- 结构件与焊点检查
+- 漆面厚度抽检点位记录
+- 底盘/发动机舱照片归档
+
+所有图片与报告编号一一对应，便于客户在沙特复检时交叉验证。`
+      },
+      {
+        id: 'test_4',
+        title: '中东高温整备｜空调系统强化 + 隔热方案实拍',
+        meta: 'Guangzhou · 2024-04',
+        image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1200',
+        gallery: ['https://images.unsplash.com/photo-1583267746897-2cf415887172?w=1200'],
+        content: `针对 50°C+ 环境，我们把“空调制冷能力”和“内饰老化风险”作为整备重点。
+
+整备包含：
+- 冷凝器/蒸发箱清洗与压力测试
+- 制冷剂补充与管路渗漏检查
+- 隔热膜方案建议（按客户预算可选）
+
+客户反馈：在利雅得中午时段空调制冷表现明显优于同类车辆。`
+      }
+    ];
+
+    // =========================
+    // Supabase 连接
+    // =========================
+    function looksLikeUrl(s) {
+      return typeof s === 'string' && /^https?:\/\//i.test(s.trim());
+    }
+
+    const supabaseConfigured = () => {
+      const hasSdk = typeof window.supabase !== 'undefined' && typeof window.supabase.createClient === 'function';
+      const urlOk = looksLikeUrl(SUPABASE_URL) && !SUPABASE_URL.includes('YOUR_SUPABASE_URL');
+      const keyOk = typeof SUPABASE_ANON_KEY === 'string' && SUPABASE_ANON_KEY.length > 20 && !SUPABASE_ANON_KEY.includes('YOUR_SUPABASE_ANON_KEY');
+      const bucketOk = typeof STORAGE_BUCKET === 'string' && STORAGE_BUCKET.length > 0 && !STORAGE_BUCKET.includes('YOUR_STORAGE_BUCKET');
+      return hasSdk && urlOk && keyOk && bucketOk;
+    };
+
+    const sb = supabaseConfigured() ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+    // =========================
+    // 状态
+    // =========================
+    let cars = [];
+    let testimonials = [];
+    let currentPage = 'home';
+
+    let currentMainImg = ""; // URL 或 dataURL
+    let currentGallery = []; // URL[]
+    let currentTestImg = ""; // URL 或 dataURL
+    let currentTestGallery = []; // URL[]
+
+    let viewerImages = [];
+    let viewerIndex = 0;
+
+    // =========================
+    // DB 映射（用于 Supabase 表结构）
+    // =========================
+    const mapCarRowToUi = (row) => ({
+      id: row.id,
+      name: row.name,
+      price: Number(row.price || 0),
+      port: row.port || 'CIF Jeddah',
+      mileage: row.mileage || '',
+      power: row.power || '',
+      image: row.image_url || '',
+      gallery: Array.isArray(row.gallery_urls) ? row.gallery_urls : (row.gallery_urls || []),
+      desc: row.description || ''
+    });
+
+    const mapTestRowToUi = (row) => ({
+      id: row.id,
+      title: row.title,
+      meta: row.meta || '',
+      image: row.image_url || '',
+      gallery: Array.isArray(row.gallery_urls) ? row.gallery_urls : (row.gallery_urls || []),
+      content: row.content || ''
+    });
+
+    // =========================
+    // Storage：File -> public URL
+    // =========================
+    function extFromMime(mime) {
+      if (!mime) return 'png';
+      if (mime.includes('png')) return 'png';
+      if (mime.includes('jpeg') || mime.includes('jpg')) return 'jpg';
+      if (mime.includes('webp')) return 'webp';
+      if (mime.includes('gif')) return 'gif';
+      return 'png';
+    }
+
+    async function uploadImageFile(file, folder) {
+      if (!sb) throw new Error('Supabase 未配置');
+
+      const ext = extFromMime(file.type);
+      const safeFolder = folder || 'uploads';
+      const fileName = `${Date.now()}_${Math.random().toString(16).slice(2)}.${ext}`;
+      const path = `${safeFolder}/${fileName}`;
+
+      const { error: upErr } = await sb.storage
+        .from(STORAGE_BUCKET)
+        .upload(path, file, { upsert: true, contentType: file.type || 'image/png' });
+
+      if (upErr) throw upErr;
+
+      const { data } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+      if (!data?.publicUrl) throw new Error('获取 public URL 失败');
+      return data.publicUrl;
+    }
+
+    // 无 Supabase 时：File -> dataURL（base64 数据URL）
+    function fileToDataUrl(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result || ''));
+        reader.onerror = () => reject(reader.error || new Error('FileReader error'));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // =========================
+    // 数据加载
+    // =========================
+    async function loadData() {
+      if (!sb) {
+        try {
+          const lc = JSON.parse(localStorage.getItem('export_cars') || 'null');
+          const lt = JSON.parse(localStorage.getItem('export_tests') || 'null');
+          cars = Array.isArray(lc) && lc.length ? lc : [...DEFAULT_CARS];
+          testimonials = Array.isArray(lt) && lt.length ? lt : [...DEFAULT_TESTIMONIALS];
+        } catch (e) {
+          cars = [...DEFAULT_CARS];
+          testimonials = [...DEFAULT_TESTIMONIALS];
+        }
+        return;
+      }
+
+      const [{ data: carRows, error: carErr }, { data: testRows, error: testErr }] = await Promise.all([
+        sb.from('cars').select('*').order('created_at', { ascending: false }),
+        sb.from('testimonials').select('*').order('created_at', { ascending: false })
+      ]);
+
+      if (carErr) {
+        console.error('[Supabase cars]', carErr);
+        cars = [...DEFAULT_CARS];
+      } else {
+        cars = (carRows || []).map(mapCarRowToUi);
+        if (!cars.length) cars = [...DEFAULT_CARS];
+      }
+
+      if (testErr) {
+        console.error('[Supabase testimonials]', testErr);
+        testimonials = [...DEFAULT_TESTIMONIALS];
+      } else {
+        testimonials = (testRows || []).map(mapTestRowToUi);
+        if (!testimonials.length) testimonials = [...DEFAULT_TESTIMONIALS];
+      }
+    }
+
+    async function refreshCars() {
+      if (!sb) return;
+      const { data, error } = await sb.from('cars').select('*').order('created_at', { ascending: false });
+      if (error) return console.error('[refreshCars]', error);
+      cars = (data || []).map(mapCarRowToUi);
+    }
+
+    async function refreshTestimonials() {
+      if (!sb) return;
+      const { data, error } = await sb.from('testimonials').select('*').order('created_at', { ascending: false });
+      if (error) return console.error('[refreshTestimonials]', error);
+      testimonials = (data || []).map(mapTestRowToUi);
+    }
+
+    // =========================
+    // UI 渲染
+    // =========================
+    function renderFrontend() {
+      const PLACEHOLDER_IMG =
+        'data:image/svg+xml;charset=utf-8,' +
+        encodeURIComponent(`<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1D37" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#006C35" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <g fill="#ffffff" fill-opacity="0.85" font-family="Inter, Arial" font-weight="800">
+    <text x="70" y="140" font-size="48">China Auto Export KSA</text>
+    <text x="70" y="210" font-size="26" font-weight="600" fill-opacity="0.75">Image placeholder (replace in admin)</text>
+  </g>
+  <g transform="translate(70,320)" fill="#ffffff" fill-opacity="0.14">
+    <rect x="0" y="0" rx="28" ry="28" width="1060" height="380"/>
+  </g>
+</svg>`);
+
+      const featuredGrid = document.getElementById('featured-grid');
+      const allInventoryGrid = document.getElementById('all-inventory-grid');
+      const testimonialsGrid = document.getElementById('testimonials-grid');
+
+      const createCarCard = (car) => {
+        const priceStr = '$' + Number(car.price || 0).toLocaleString();
+        const mileageStr = String(car.mileage || '').trim();
+        const waText = encodeURIComponent(`咨询车型: ${car.name}`);
+        const waLink = `https://wa.me/8617600906021?text=${waText}`;
+
+        // 入口卡片：图片在上、信息在下（更符合移动端/多数车源站点列表习惯）
+        // 设计要点：图上压标题（加粗），下方只保留“价格 + +号 + WhatsApp”与里程信息。
+        return `
+          <div class="bg-white rounded-[1.75rem] overflow-hidden border border-gray-100 shadow-md hover:shadow-2xl transition duration-300 group hover:-translate-y-1">
+            <div class="relative overflow-hidden h-64 cursor-pointer" onclick="navigateTo('car-${car.id}')">
+              <img src="${car.image || PLACEHOLDER_IMG}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="${(car.name || 'Car').replace(/\"/g, '&quot;')}" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="flex items-end justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="text-white text-lg md:text-xl font-extrabold leading-snug line-clamp-2 drop-shadow">${car.name}</div>
+                    ${mileageStr ? `<div class=\"mt-2 text-white/80 text-sm font-semibold drop-shadow\">里程 ${mileageStr}</div>` : ''}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-baseline gap-1">
+                  <span class="text-2xl font-black text-rose-600">${priceStr}</span>
+                  <span class="text-2xl font-black text-rose-600">+</span>
+                </div>
+
+                <a href="${waLink}" class="wa-fab wa-fab-shadow w-12 h-12 rounded-full flex items-center justify-center transition hover:scale-105" aria-label="WhatsApp">
+                  <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      };
+
+      if (featuredGrid) featuredGrid.innerHTML = (cars || []).slice(0, 9).map(createCarCard).join('');
+      if (allInventoryGrid) allInventoryGrid.innerHTML = (cars || []).map(createCarCard).join('');
+
+      if (testimonialsGrid) {
+        testimonialsGrid.innerHTML = (testimonials || []).map((test) => `
+          <div onclick="navigateTo('testimonial-${test.id}')" class="relative group cursor-pointer overflow-hidden rounded-[2rem] aspect-[9/16] shadow-xl">
+            <img src="${test.image || PLACEHOLDER_IMG}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="${(test.title || 'Testimonial').replace(/\"/g, '&quot;')}" />
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-transparent to-transparent opacity-70"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white text-left z-20">
+              <p class="text-xs font-black uppercase tracking-wider mb-1 text-gold">${test.meta || ''}</p>
+              <p class="text-sm font-bold leading-tight line-clamp-2">${test.title || ''}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function renderCarDetail(carId) {
+      const car = (cars || []).find((c) => c.id === carId);
+      const container = document.getElementById('car-detail-content');
+      if (!container) return;
+      if (!car) {
+        container.innerHTML = '<div class="text-gray-500">未找到该车型。</div>';
+        return;
+      }
+
+      const allImages = [car.image, ...(car.gallery || [])].filter(Boolean);
+      const priceStr = '$' + Number(car.price || 0).toLocaleString();
+      const waText = encodeURIComponent(`咨询车型: ${car.name}`);
+      const waLink = `https://wa.me/8617600906021?text=${waText}`;
+
+      container.innerHTML = `
+        <div class="grid md:grid-cols-2 gap-12 text-left">
+          <div>
+            <img onclick="openImageViewer(${JSON.stringify(allImages)}, 0)" src="${allImages[0] || ''}" class="w-full rounded-[2rem] shadow-2xl mb-6 cursor-pointer hover:opacity-90 transition" alt="${(car.name || 'Car').replace(/\"/g, '&quot;')}" />
+            ${allImages.length > 1 ? `
+              <div class="grid grid-cols-2 gap-4">
+                ${allImages.slice(1).map((url, idx) => {
+                  const i = idx + 1;
+                  return `<img onclick=\"openImageViewer(${JSON.stringify(allImages)}, ${i})\" src=\"${url}\" class=\"rounded-xl shadow-sm h-48 w-full object-cover cursor-pointer hover:opacity-90 transition\" />`;
+                }).join('')}
+              </div>
+            ` : ''}
+          </div>
+
+          <div>
+            <h1 class="text-4xl font-black text-blue-900 mb-4">${car.name}</h1>
+            <p class="text-3xl font-black text-rose-600 mb-8">${priceStr}</p>
+
+            <div class="bg-gray-100 rounded-3xl p-8 mb-8 grid grid-cols-2 gap-6 font-bold">
+              <div>
+                <p class="text-xs text-gray-400 uppercase">里程</p>
+                <div>${car.mileage || '-'}</div>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase">动力</p>
+                <div>${car.power || '-'}</div>
+              </div>
+            </div>
+
+            <p class="text-gray-600 leading-relaxed whitespace-pre-wrap">${(car.desc || '').replace(/</g, '&lt;')}</p>
+
+            <a href="${waLink}" class="mt-8 block w-full wa-btn text-white text-center py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl transition btn-active">WhatsApp Inquiry</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTestimonialDetail(id) {
+      const test = (testimonials || []).find((t) => t.id === id);
+      const container = document.getElementById('testimonial-detail-content');
+      if (!container) return;
+      if (!test) {
+        container.innerHTML = '<div class="text-gray-500">未找到该见证内容。</div>';
+        return;
+      }
+
+      const allImages = [test.image, ...(test.gallery || [])].filter(Boolean);
+
+      container.innerHTML = `
+        <div class="max-w-3xl mx-auto">
+          <img onclick="openImageViewer(${JSON.stringify(allImages)}, 0)" src="${allImages[0] || ''}" class="w-full h-80 object-cover rounded-[2.5rem] shadow-2xl mb-10 cursor-pointer" />
+          <h1 class="text-3xl font-black text-blue-900 mb-4">${test.title || ''}</h1>
+          <p class="text-sm font-bold text-gold uppercase tracking-widest mb-8">${test.meta || ''}</p>
+
+          <div class="prose prose-lg text-gray-700 whitespace-pre-wrap">${(test.content || '').replace(/</g, '&lt;')}</div>
+
+          ${allImages.length > 1 ? `
+            <div class="mt-10 grid grid-cols-2 gap-4">
+              ${allImages.slice(1).map((url, idx) => {
+                const i = idx + 1;
+                return `<img onclick=\"openImageViewer(${JSON.stringify(allImages)}, ${i})\" src=\"${url}\" class=\"rounded-2xl shadow-sm h-40 w-full object-cover cursor-pointer hover:opacity-90 transition\" />`;
+              }).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // =========================
+    // 后台渲染
+    // =========================
+    function renderAdmin() {
+      const carList = document.getElementById('admin-cars-list');
+      const testList = document.getElementById('admin-testimonials-list');
+
+      if (carList) {
+        carList.innerHTML = (cars || []).map((car) => `
+          <tr class="border-b hover:bg-gray-50">
+            <td class="p-4 font-bold text-left">${car.name || ''}</td>
+            <td class="p-4 font-bold text-left text-rose-600">$${Number(car.price || 0).toLocaleString()}</td>
+            <td class="p-4 text-left">${car.mileage || ''}</td>
+            <td class="p-4 text-left">
+              <button onclick="openCarModal('${car.id}')" class="text-blue-600 mr-3 font-bold">编辑</button>
+              <button onclick="deleteCar('${car.id}')" class="text-red-600 font-bold">删除</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      if (testList) {
+        testList.innerHTML = (testimonials || []).map((test) => `
+          <div class="p-4 border rounded-xl flex justify-between items-center bg-white shadow-sm">
+            <div class="flex items-center space-x-4">
+              <img src="${test.image || ''}" class="w-12 h-12 rounded object-cover" />
+              <div class="text-left">
+                <p class="font-bold">${test.title || ''}</p>
+                <p class="text-xs text-gray-400">${test.meta || ''}</p>
+              </div>
+            </div>
+            <div>
+              <button onclick="openTestimonialModal('${test.id}')" class="text-blue-600 mr-4 font-bold">编辑</button>
+              <button onclick="deleteTestimonial('${test.id}')" class="text-red-600 font-bold">删除</button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function switchAdminTab(tab) {
+      const carsPanel = document.getElementById('admin-cars-panel');
+      const testsPanel = document.getElementById('admin-testimonials-panel');
+      const tabCars = document.getElementById('tab-cars');
+      const tabTests = document.getElementById('tab-testimonials');
+
+      if (carsPanel) carsPanel.classList.toggle('hidden', tab !== 'cars');
+      if (testsPanel) testsPanel.classList.toggle('hidden', tab !== 'testimonials');
+
+      if (tabCars) tabCars.className = `w-full text-left p-4 rounded-xl font-bold ${tab === 'cars' ? 'bg-blue-900 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-200 transition'}`;
+      if (tabTests) tabTests.className = `w-full text-left p-4 rounded-xl font-bold ${tab === 'testimonials' ? 'bg-blue-900 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-200 transition'}`;
+    }
+
+    // =========================
+    // Admin: 图片粘贴（Ctrl+V）
+    // =========================
+    function initPasteUpload() {
+      const zones = document.querySelectorAll('.p-img-paste');
+      zones.forEach((zone) => {
+        zone.addEventListener('paste', async (e) => {
+          try {
+            const items = (e.clipboardData || e.originalEvent?.clipboardData)?.items;
+            if (!items) return;
+
+            for (const item of items) {
+              if (!item.type || item.type.indexOf('image') === -1) continue;
+              const file = item.getAsFile();
+              if (!file) continue;
+
+              let url = '';
+              if (sb) {
+                const folder = zone.id === 'test-img-zone' || zone.id === 'test-gallery-zone' ? 'testimonials' : 'cars';
+                url = await uploadImageFile(file, folder);
+              } else {
+                url = await fileToDataUrl(file);
+              }
+
+              if (zone.id === 'main-img-zone') {
+                currentMainImg = url;
+                renderImgZone('main-img-zone', currentMainImg ? [currentMainImg] : []);
+              } else if (zone.id === 'gallery-img-zone') {
+                currentGallery.push(url);
+                renderImgZone('gallery-img-zone', currentGallery);
+              } else if (zone.id === 'test-img-zone') {
+                currentTestImg = url;
+                renderImgZone('test-img-zone', currentTestImg ? [currentTestImg] : []);
+              } else if (zone.id === 'test-gallery-zone') {
+                currentTestGallery.push(url);
+                renderImgZone('test-gallery-zone', currentTestGallery);
+              }
+            }
+          } catch (err) {
+            console.error('paste upload failed', err);
+            alert('粘贴图片失败：请打开控制台查看错误。');
+          }
+        });
+      });
+    }
+
+    function renderImgZone(zoneId, images) {
+      const zone = document.getElementById(zoneId);
+      if (!zone) return;
+
+      const html = (images || []).map((img, idx) => `
+        <div class="img-card">
+          <div class="img-delete" onclick="removeImg('${zoneId}', ${idx}); event.stopPropagation();">×</div>
+          <img src="${img}" />
+        </div>
+      `).join('');
+
+      const placeholder = zoneId.includes('gallery') ? '点击此处粘贴多张图片' : '点击此处粘贴图片';
+      zone.innerHTML = `<div class="img-preview-box">${html}</div>${(images || []).length === 0 ? `<span class="text-xs text-gray-400">${placeholder}</span>` : ''}`;
+    }
+
+    function removeImg(zoneId, idx) {
+      if (zoneId === 'main-img-zone') {
+        currentMainImg = '';
+        renderImgZone(zoneId, []);
+      } else if (zoneId === 'gallery-img-zone') {
+        currentGallery.splice(idx, 1);
+        renderImgZone(zoneId, currentGallery);
+      } else if (zoneId === 'test-img-zone') {
+        currentTestImg = '';
+        renderImgZone(zoneId, []);
+      } else if (zoneId === 'test-gallery-zone') {
+        currentTestGallery.splice(idx, 1);
+        renderImgZone(zoneId, currentTestGallery);
+      }
+    }
+
+    // =========================
+    // 导航 / 路由（#chen 后台入口）
+    // =========================
+    function navigateTo(pageId) {
+      currentPage = pageId;
+      document.querySelectorAll('.page-content').forEach((p) => p.classList.add('hidden-page'));
+
+      if (pageId.startsWith('car-')) {
+        const id = pageId.replace('car-', '');
+        renderCarDetail(id);
+        document.getElementById('car-detail-page')?.classList.remove('hidden-page');
+      } else if (pageId.startsWith('testimonial-')) {
+        const id = pageId.replace('testimonial-', '');
+        renderTestimonialDetail(id);
+        document.getElementById('testimonial-detail-page')?.classList.remove('hidden-page');
+      } else {
+        document.getElementById(pageId + '-page')?.classList.remove('hidden-page');
+      }
+
+      if (pageId === 'admin') {
+        ['main-nav', 'main-footer', 'whatsapp-float'].forEach((id) => document.getElementById(id)?.classList.add('hidden-page'));
+        renderAdmin();
+      } else {
+        ['main-nav', 'main-footer', 'whatsapp-float'].forEach((id) => document.getElementById(id)?.classList.remove('hidden-page'));
+        renderFrontend();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function routeByHash() {
+      const h = (window.location.hash || '').trim().toLowerCase();
+      if (h === '#chen' || h === '#admin') {
+        navigateTo('admin');
+      }
+    }
+
+    // =========================
+    // CRUD（local 或 Supabase）
+    // =========================
+    async function deleteCar(id) {
+      if (!confirm('确定删除？')) return;
+
+      if (sb) {
+        const { error } = await sb.from('cars').delete().eq('id', id);
+        if (error) {
+          console.error('[deleteCar]', error);
+          alert('删除失败，请查看控制台。');
+          return;
+        }
+        await refreshCars();
+      } else {
+        cars = (cars || []).filter((c) => c.id !== id);
+        localStorage.setItem('export_cars', JSON.stringify(cars));
+      }
+
+      renderAdmin();
+      renderFrontend();
+    }
+
+    async function deleteTestimonial(id) {
+      if (!confirm('确定删除？')) return;
+
+      if (sb) {
+        const { error } = await sb.from('testimonials').delete().eq('id', id);
+        if (error) {
+          console.error('[deleteTestimonial]', error);
+          alert('删除失败，请查看控制台。');
+          return;
+        }
+        await refreshTestimonials();
+      } else {
+        testimonials = (testimonials || []).filter((t) => t.id !== id);
+        localStorage.setItem('export_tests', JSON.stringify(testimonials));
+      }
+
+      renderAdmin();
+      renderFrontend();
+    }
+
+    function openCarModal(id = null) {
+      const form = document.getElementById('car-form');
+      if (!form) return;
+      form.reset();
+      currentMainImg = '';
+      currentGallery = [];
+
+      if (id) {
+        const car = (cars || []).find((c) => c.id === id);
+        if (car) {
+          document.getElementById('car-id').value = car.id;
+          document.getElementById('car-name').value = car.name || '';
+          document.getElementById('car-price').value = Number(car.price || 0);
+          document.getElementById('car-mileage').value = car.mileage || '';
+          document.getElementById('car-power').value = car.power || '';
+          document.getElementById('car-desc').value = car.desc || '';
+          currentMainImg = car.image || '';
+          currentGallery = [...(car.gallery || [])];
+        }
+      }
+
+      renderImgZone('main-img-zone', currentMainImg ? [currentMainImg] : []);
+      renderImgZone('gallery-img-zone', currentGallery);
+
+      const modal = document.getElementById('car-modal');
+      modal?.classList.remove('hidden');
+      modal?.classList.add('flex');
+    }
+
+    function openTestimonialModal(id = null) {
+      const form = document.getElementById('testimonial-form');
+      if (!form) return;
+      form.reset();
+      currentTestImg = '';
+      currentTestGallery = [];
+
+      if (id) {
+        const t = (testimonials || []).find((x) => x.id === id);
+        if (t) {
+          document.getElementById('test-id').value = t.id;
+          document.getElementById('test-title').value = t.title || '';
+          document.getElementById('test-meta').value = t.meta || '';
+          document.getElementById('test-content').value = t.content || '';
+          currentTestImg = t.image || '';
+          currentTestGallery = [...(t.gallery || [])];
+        }
+      }
+
+      renderImgZone('test-img-zone', currentTestImg ? [currentTestImg] : []);
+      renderImgZone('test-gallery-zone', currentTestGallery);
+
+      const modal = document.getElementById('testimonial-modal');
+      modal?.classList.remove('hidden');
+      modal?.classList.add('flex');
+    }
+
+    function closeModal(modalId) {
+      const el = document.getElementById(modalId);
+      if (!el) return;
+      el.classList.add('hidden');
+      el.classList.remove('flex');
+    }
+
+    document.getElementById('car-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const id = document.getElementById('car-id').value || ('car_' + Date.now());
+      const data = {
+        id,
+        name: document.getElementById('car-name').value,
+        price: Number(document.getElementById('car-price').value || 0),
+        port: 'CIF Jeddah',
+        mileage: document.getElementById('car-mileage').value,
+        power: document.getElementById('car-power').value,
+        image: currentMainImg,
+        gallery: currentGallery,
+        desc: document.getElementById('car-desc').value
+      };
+
+      if (sb) {
+        const row = {
+          id: data.id,
+          name: data.name,
+          price: data.price,
+          port: data.port,
+          mileage: data.mileage,
+          power: data.power,
+          image_url: data.image,
+          gallery_urls: data.gallery,
+          description: data.desc
+        };
+        const { error } = await sb.from('cars').upsert(row, { onConflict: 'id' });
+        if (error) {
+          console.error('[cars upsert]', error);
+          alert('保存失败，请查看控制台。');
+          return;
+        }
+        await refreshCars();
+      } else {
+        const idx = (cars || []).findIndex((c) => c.id === data.id);
+        if (idx > -1) cars[idx] = data;
+        else (cars || []).unshift(data);
+        localStorage.setItem('export_cars', JSON.stringify(cars));
+      }
+
+      closeModal('car-modal');
+      renderAdmin();
+      renderFrontend();
+    });
+
+    document.getElementById('testimonial-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const id = document.getElementById('test-id').value || ('test_' + Date.now());
+      const data = {
+        id,
+        title: document.getElementById('test-title').value,
+        meta: document.getElementById('test-meta').value,
+        image: currentTestImg,
+        gallery: currentTestGallery,
+        content: document.getElementById('test-content').value
+      };
+
+      if (sb) {
+        const row = {
+          id: data.id,
+          title: data.title,
+          meta: data.meta,
+          image_url: data.image,
+          gallery_urls: data.gallery,
+          content: data.content
+        };
+        const { error } = await sb.from('testimonials').upsert(row, { onConflict: 'id' });
+        if (error) {
+          console.error('[testimonials upsert]', error);
+          alert('保存失败，请查看控制台。');
+          return;
+        }
+        await refreshTestimonials();
+      } else {
+        const idx = (testimonials || []).findIndex((t) => t.id === data.id);
+        if (idx > -1) testimonials[idx] = data;
+        else (testimonials || []).unshift(data);
+        localStorage.setItem('export_tests', JSON.stringify(testimonials));
+      }
+
+      closeModal('testimonial-modal');
+      renderAdmin();
+      renderFrontend();
+    });
+
+    // =========================
+    // 图片查看器
+    // =========================
+    function openImageViewer(images, index) {
+      viewerImages = Array.isArray(images) ? images : [];
+      viewerIndex = Math.max(0, Math.min(Number(index || 0), Math.max(0, viewerImages.length - 1)));
+      const imgEl = document.getElementById('viewer-img');
+      if (imgEl && viewerImages[viewerIndex]) imgEl.src = viewerImages[viewerIndex];
+      const viewer = document.getElementById('image-viewer');
+      if (viewer) {
+        viewer.classList.remove('hidden');
+        viewer.classList.add('flex');
+      }
+    }
+
+    function closeImageViewer() {
+      const viewer = document.getElementById('image-viewer');
+      if (!viewer) return;
+      viewer.classList.add('hidden');
+      viewer.classList.remove('flex');
+    }
+
+    function nextImage() {
+      if (!viewerImages.length) return;
+      viewerIndex = (viewerIndex + 1) % viewerImages.length;
+      document.getElementById('viewer-img').src = viewerImages[viewerIndex];
+    }
+
+    function prevImage() {
+      if (!viewerImages.length) return;
+      viewerIndex = (viewerIndex - 1 + viewerImages.length) % viewerImages.length;
+      document.getElementById('viewer-img').src = viewerImages[viewerIndex];
+    }
+
+    // =========================
+    // 工具：导出 / 清空
+    // =========================
+    function exportStaticSnippet() {
+      const payload = { cars, testimonials };
+      const text = JSON.stringify(payload, null, 2);
+      navigator.clipboard.writeText(text).then(() => {
+        alert('已复制到剪贴板。你可以把 cars/testimonials 写入 JSON 文件，或用于静态部署。');
+      }).catch(() => {
+        alert('复制失败：请手动从控制台获取 JSON。');
+        console.log(text);
+      });
+    }
+
+    function clearLocalDraft() {
+      if (!confirm('确定清空本地草稿（localStorage）？')) return;
+      localStorage.removeItem('export_cars');
+      localStorage.removeItem('export_tests');
+      cars = [...DEFAULT_CARS];
+      testimonials = [...DEFAULT_TESTIMONIALS];
+      renderAdmin();
+      renderFrontend();
+      alert('已清空。');
+    }
+
+    // =========================
+    // 启动
+    // =========================
+    function runHeroTypewriter() {
+      if (window.__heroTyped) return;
+      const l1 = document.getElementById('hero-line1');
+      const l2 = document.getElementById('hero-line2');
+      if (!l1 || !l2) return;
+
+      const line1 = '批量出口交付解决方案';
+      const line2 = '进货、整备、清关一站式';
+
+      l1.textContent = '';
+      l2.textContent = '';
+
+      const speed = 42; // ms per char
+      let i = 0;
+      let phase = 1;
+
+      function tick() {
+        if (phase === 1) {
+          l1.textContent = line1.slice(0, i);
+          i += 1;
+          if (i <= line1.length) {
+            setTimeout(tick, speed);
+          } else {
+            phase = 2;
+            i = 0;
+            setTimeout(tick, 220);
+          }
+          return;
+        }
+
+        if (phase === 2) {
+          l2.textContent = line2.slice(0, i);
+          i += 1;
+          if (i <= line2.length) {
+            setTimeout(tick, speed);
+          } else {
+            window.__heroTyped = true;
+          }
+        }
+      }
+
+      // small delay so it feels like a hero entrance
+      setTimeout(tick, 180);
+    }
+
+    async function boot() {
+      try {
+        await loadData();
+        initPasteUpload();
+        renderFrontend();
+        routeByHash();
+        // 首页打字机效果（只执行一次）
+        runHeroTypewriter();
+        if (currentPage === 'admin') renderAdmin();
+      } catch (e) {
+        console.error('boot failed', e);
+      }
+    }
+
+    window.addEventListener('hashchange', routeByHash);
+    window.addEventListener('load', boot);
+  </script>
+</body>
+</html>
