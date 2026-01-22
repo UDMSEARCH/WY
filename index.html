@@ -185,7 +185,7 @@
 
   <!-- 顶部公告 -->
   <div class="bg-yellow-500 text-white py-2 text-center text-sm font-bold">
-    <i class="fas fa-certificate mr-2"></i> 郑重承诺：车况不符，严格执行 20% 赔付标准 | Verified SGS Inspection
+    <i class="fas fa-certificate mr-2"></i> <span data-i18n="announcement">郑重承诺：车况不符，严格执行 20% 赔付标准 | Verified SGS Inspection</span>
   </div>
 
   <!-- 导航栏 -->
@@ -195,25 +195,25 @@
         <div class="w-10 h-10 bg-blue-900 flex items-center justify-center rounded-lg">
           <i class="fas fa-car-side text-white"></i>
         </div>
-        <span class="text-xl font-black text-blue-900 tracking-tighter">中汽<span class="text-gold">出海</span></span>
+        <span class="text-xl font-black text-blue-900 tracking-tighter" data-i18n-html="brand.name">中汽<span class="text-gold">出海</span></span>
       </div>
 
       <div class="hidden md:flex space-x-8 text-sm font-bold text-gray-700 uppercase tracking-widest items-center">
-        <a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-blue-900 transition">主页</a>
-        <a href="javascript:void(0)" onclick="navigateTo('inventory')" class="hover:text-blue-900 transition">现车库存</a>
-        <a href="#trust" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition">信任保障</a>
-        <a href="#service" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition">出口服务</a>
-        <a href="#partner" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition">战略合作</a>
+        <a href="javascript:void(0)" onclick="navigateTo('home')" class="hover:text-blue-900 transition" data-i18n="nav.home">主页</a>
+        <a href="javascript:void(0)" onclick="navigateTo('inventory')" class="hover:text-blue-900 transition" data-i18n="nav.inventory">现车库存</a>
+        <a href="#trust" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition" data-i18n="nav.trust">信任保障</a>
+        <a href="#service" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition" data-i18n="nav.service">出口服务</a>
+        <a href="#partner" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-blue-900 transition" data-i18n="nav.partner">战略合作</a>
       </div>
 
       <div class="flex items-center space-x-4">
-        <select class="bg-gray-100 border-none rounded px-2 py-1 text-xs font-bold">
-          <option>中文 (CN)</option>
-          <option>English (EN)</option>
-          <option>العربية (AR)</option>
+        <select id="lang-select" class="bg-gray-100 border-none rounded px-2 py-1 text-xs font-bold" onchange="setLanguage(this.value)">
+          <option value="zh">中文 (CN)</option>
+          <option value="en">English (EN)</option>
+          <option value="ar">العربية (AR)</option>
         </select>
         <a href="https://wa.me/8617600906021" class="wa-btn text-white px-5 py-2 rounded-full text-sm font-bold hover:shadow-lg btn-active transition flex items-center">
-          <i class="fab fa-whatsapp mr-2 text-lg"></i> 联系我们
+          <i class="fab fa-whatsapp mr-2 text-lg"></i> <span data-i18n="nav.contact">联系我们</span>
         </a>
       </div>
     </div>
@@ -225,16 +225,16 @@
     <header class="hero-section min-h-[85vh] flex items-center text-white relative pb-32">
       <div class="container mx-auto px-6">
         <div class="max-w-3xl text-left">
-          <span class="inline-block bg-gold text-white px-3 py-1 rounded text-xs font-bold mb-4 uppercase tracking-widest">沙特市场首选供应商</span>
+          <span class="inline-block bg-gold text-white px-3 py-1 rounded text-xs font-bold mb-4 uppercase tracking-widest" data-i18n="hero.badge">沙特市场首选供应商</span>
           <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
                         <span id="hero-line1"></span><br><span id="hero-line2" class="text-gold"></span>
                     </h1>
-          <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed font-light">
+          <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed font-light" data-i18n="hero.desc">
             专注中国新能源及燃油二手车出口。SGS 全车检测，20% 差额赔付，提供从采购、整备到清关的一站式解决方案。
           </p>
           <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mb-12">
             <a href="javascript:void(0)" onclick="navigateTo('inventory')" class="bg-blue-900 text-white px-10 py-4 rounded-xl font-bold text-center hover:bg-blue-800 transition shadow-xl border border-blue-700/50 btn-active">
-              浏览现车库
+              <span data-i18n="hero.cta">浏览现车库</span>
             </a>
           </div>
         </div>
@@ -246,29 +246,29 @@
             <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
               <i class="fas fa-shield-check text-3xl text-gold"></i>
               <div>
-                <h4 class="font-bold text-blue-900">20% 赔付承诺</h4>
-                <p class="text-xs text-gray-500">检测不符立即赔付</p>
+                <h4 class="font-bold text-blue-900" data-i18n="hero.card1.title">20% 赔付承诺</h4>
+                <p class="text-xs text-gray-500" data-i18n="hero.card1.desc">检测不符立即赔付</p>
               </div>
             </div>
             <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
               <i class="fas fa-file-contract text-3xl text-gold"></i>
               <div>
-                <h4 class="font-bold text-blue-900">SGS 联名报告</h4>
-                <p class="text-xs text-gray-500">第三方客观检测</p>
+                <h4 class="font-bold text-blue-900" data-i18n="hero.card2.title">SGS 联名报告</h4>
+                <p class="text-xs text-gray-500" data-i18n="hero.card2.desc">第三方客观检测</p>
               </div>
             </div>
             <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
               <i class="fas fa-snowflake text-3xl text-gold"></i>
               <div>
-                <h4 class="font-bold text-blue-900">中东气候整备</h4>
-                <p class="text-xs text-gray-500">空调制冷系统强化</p>
+                <h4 class="font-bold text-blue-900" data-i18n="hero.card3.title">中东气候整备</h4>
+                <p class="text-xs text-gray-500" data-i18n="hero.card3.desc">空调制冷系统强化</p>
               </div>
             </div>
             <div class="glass-card p-6 rounded-2xl shadow-2xl flex items-center space-x-4">
               <i class="fas fa-ship text-3xl text-gold"></i>
               <div>
-                <h4 class="font-bold text-blue-900">清关手续全包</h4>
-                <p class="text-xs text-gray-500">沙特各大港口直通</p>
+                <h4 class="font-bold text-blue-900" data-i18n="hero.card4.title">清关手续全包</h4>
+                <p class="text-xs text-gray-500" data-i18n="hero.card4.desc">沙特各大港口直通</p>
               </div>
             </div>
           </div>
@@ -282,21 +282,21 @@
         <!-- 寻车需求引导 -->
         <div class="mb-16 bg-white border border-blue-50 rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between shadow-lg ring-1 ring-blue-100">
           <div class="text-left mb-6 md:mb-0">
-            <h3 class="text-2xl font-black text-blue-900 mb-2">一站式解决各品牌新车/二手车低价车源</h3>
-            <p class="text-gray-600 max-w-xl">依托强大的供应链能力与深厚的行业积累，我们为您提供全品牌精准寻车、实时比价及全流程出口整备，助您锁定极具价格竞争力的优质车源。</p>
+            <h3 class="text-2xl font-black text-blue-900 mb-2" data-i18n="inventory.guide.title">没有您想要找的车？</h3>
+            <p class="text-gray-600 max-w-xl" data-i18n="inventory.guide.desc">依托强大的供应链能力与深厚的行业积累，我们为您提供全品牌精准寻车、实时比价及全流程出口整备，助您锁定极具价格竞争力的优质车源。</p>
           </div>
-          <a href="https://wa.me/8617600906021?text=Hi, I am looking for a specific car model with best price..." class="wa-btn text-white px-10 py-5 rounded-2xl font-black shadow-xl hover:shadow-2xl transition btn-active flex items-center shrink-0">
-            <i class="fab fa-whatsapp mr-3 text-2xl"></i> 咨询车型报价
+          <a id="inventory-wa-link" href="https://wa.me/8617600906021?text=Hi, I am looking for a specific car model with best price..." class="wa-btn text-white px-10 py-5 rounded-2xl font-black shadow-xl hover:shadow-2xl transition btn-active flex items-center shrink-0">
+            <i class="fab fa-whatsapp mr-3 text-2xl"></i> <span data-i18n="inventory.guide.cta">咨询车型报价</span>
           </a>
         </div>
 
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 text-left">
           <div>
-            <h2 class="text-4xl font-extrabold text-blue-900">爆款车型</h2>
-            <p class="text-gray-500 mt-2 italic font-serif text-lg">Export-ready vehicles with localized specs</p>
+            <h2 class="text-4xl font-extrabold text-blue-900" data-i18n="inventory.featured.title">爆款车型</h2>
+            <p class="text-gray-500 mt-2 italic font-serif text-lg" data-i18n="inventory.featured.subtitle">Export-ready vehicles with localized specs</p>
           </div>
           <div class="mt-6 md:mt-0 flex space-x-4">
-            <button onclick="navigateTo('inventory')" class="px-6 py-2 bg-blue-900 text-white rounded-lg text-sm font-bold shadow-md hover:bg-blue-800 transition btn-active">更多车型 <i class="fas fa-arrow-right ml-2"></i></button>
+            <button onclick="navigateTo('inventory')" class="px-6 py-2 bg-blue-900 text-white rounded-lg text-sm font-bold shadow-md hover:bg-blue-800 transition btn-active"><span data-i18n="inventory.featured.more">更多车型</span> <i class="fas fa-arrow-right ml-2"></i></button>
           </div>
         </div>
 
@@ -309,15 +309,15 @@
       <div class="container mx-auto px-6 text-left">
         <div class="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 class="text-4xl font-extrabold mb-8 text-gold uppercase italic">The Trust Protocol <br />信任协议书</h2>
+            <h2 class="text-4xl font-extrabold mb-8 text-gold uppercase italic" data-i18n-html="trust.title">The Trust Protocol <br />信任协议书</h2>
             <div class="space-y-8">
               <div class="flex items-start space-x-6">
                 <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
                   <span class="text-gold font-bold">01</span>
                 </div>
                 <div>
-                  <h4 class="text-xl font-bold mb-2">20% 赔付惩罚机制</h4>
-                  <p class="text-gray-400">如果我们提供的 SGS 检测报告与您的最终检车结果在“重大事故、火烧、泡水”上存在偏差，我们承诺按成交价的 20% 现汇赔付，并全额退款退车。</p>
+                  <h4 class="text-xl font-bold mb-2" data-i18n="trust.item1.title">20% 赔付惩罚机制</h4>
+                  <p class="text-gray-400" data-i18n="trust.item1.desc">如果我们提供的 SGS 检测报告与您的最终检车结果在“重大事故、火烧、泡水”上存在偏差，我们承诺按成交价的 20% 现汇赔付，并全额退款退车。</p>
                 </div>
               </div>
               <div class="flex items-start space-x-6">
@@ -325,8 +325,8 @@
                   <span class="text-gold font-bold">02</span>
                 </div>
                 <div>
-                  <h4 class="text-xl font-bold mb-2">透明供应链实录</h4>
-                  <p class="text-gray-400">客户可通过 WhatsApp 实时接收车辆从“装柜、离港、在途、清关”的所有单据照片 and 视频录影。</p>
+                  <h4 class="text-xl font-bold mb-2" data-i18n="trust.item2.title">透明供应链实录</h4>
+                  <p class="text-gray-400" data-i18n="trust.item2.desc">客户可通过 WhatsApp 实时接收车辆从“装柜、离港、在途、清关”的所有单据照片 and 视频录影。</p>
                 </div>
               </div>
               <div class="flex items-start space-x-6">
@@ -334,17 +334,17 @@
                   <span class="text-gold font-bold">03</span>
                 </div>
                 <div>
-                  <h4 class="text-xl font-bold mb-2">沙特本地化技术优化</h4>
-                  <p class="text-gray-400">针对中东 50°C+ 的高温环境，我们对每一台车进行空调冷凝器清洗、防紫外线隔热膜贴膜及易损塑料件加固。</p>
+                  <h4 class="text-xl font-bold mb-2" data-i18n="trust.item3.title">沙特本地化技术优化</h4>
+                  <p class="text-gray-400" data-i18n="trust.item3.desc">针对中东 50°C+ 的高温环境，我们对每一台车进行空调冷凝器清洗、防紫外线隔热膜贴膜及易损塑料件加固。</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="bg-white p-10 rounded-3xl text-gray-900 shadow-2xl relative overflow-hidden">
             <div class="absolute top-[-20px] right-[-20px] w-40 h-40 bg-gold/10 rounded-full blur-3xl"></div>
-            <img src="https://images.unsplash.com/photo-1600880212319-4a02476b701d?auto=format&fit=crop&w=800&q=80" class="rounded-2xl mb-6 shadow-lg w-full" alt="商务协作" />
-            <h3 class="text-2xl font-bold mb-4">为什么信任我们？</h3>
-            <p class="text-gray-600 mb-6 italic leading-relaxed">"在跨境交易中，信任是比金子更贵的资产。我们不是在卖车，而是在沙特建立一个长期可信赖的汽车供应链枢纽。"</p>
+            <img src="https://images.unsplash.com/photo-1600880212319-4a02476b701d?auto=format&fit=crop&w=800&q=80" class="rounded-2xl mb-6 shadow-lg w-full" alt="商务协作" data-i18n-alt="trust.image.alt" />
+            <h3 class="text-2xl font-bold mb-4" data-i18n="trust.why.title">为什么信任我们？</h3>
+            <p class="text-gray-600 mb-6 italic leading-relaxed" data-i18n="trust.why.quote">"在跨境交易中，信任是比金子更贵的资产。我们不是在卖车，而是在沙特建立一个长期可信赖的汽车供应链枢纽。"</p>
           </div>
         </div>
       </div>
@@ -353,12 +353,12 @@
     <!-- 出口服务 -->
     <section id="service" class="py-24 bg-white">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-extrabold text-blue-900 mb-4 text-center">出口流程一站式服务</h2>
+        <h2 class="text-3xl font-extrabold text-blue-900 mb-4 text-center" data-i18n="service.title">出口流程一站式服务</h2>
         <div class="grid md:grid-cols-4 gap-8 mt-16 text-center">
-          <div class="p-8 border rounded-3xl"><i class="fas fa-search-dollar text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">全市场采购</h4></div>
-          <div class="p-8 border rounded-3xl"><i class="fas fa-tools text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">高温定制整备</h4></div>
-          <div class="p-8 border rounded-3xl"><i class="fas fa-file-invoice-dollar text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">清关手续代办</h4></div>
-          <div class="p-8 border rounded-3xl"><i class="fas fa-truck-loading text-3xl text-gold mb-6"></i><h4 class="font-bold text-center">多式联运直达</h4></div>
+          <div class="p-8 border rounded-3xl"><i class="fas fa-search-dollar text-3xl text-gold mb-6"></i><h4 class="font-bold text-center" data-i18n="service.item1">全市场采购</h4></div>
+          <div class="p-8 border rounded-3xl"><i class="fas fa-tools text-3xl text-gold mb-6"></i><h4 class="font-bold text-center" data-i18n="service.item2">高温定制整备</h4></div>
+          <div class="p-8 border rounded-3xl"><i class="fas fa-file-invoice-dollar text-3xl text-gold mb-6"></i><h4 class="font-bold text-center" data-i18n="service.item3">清关手续代办</h4></div>
+          <div class="p-8 border rounded-3xl"><i class="fas fa-truck-loading text-3xl text-gold mb-6"></i><h4 class="font-bold text-center" data-i18n="service.item4">多式联运直达</h4></div>
         </div>
       </div>
     </section>
@@ -366,8 +366,8 @@
     <!-- 沙特客户见证 -->
     <section id="testimonials-section" class="py-24 bg-slate-50 border-t border-slate-200">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-4xl font-black text-blue-900 mb-4 text-center">沙特客户见证</h2>
-        <p class="text-slate-400 mb-16 uppercase tracking-widest text-xs font-bold text-center">Social Proof From Riyadh to Jeddah</p>
+        <h2 class="text-4xl font-black text-blue-900 mb-4 text-center" data-i18n="testimonials.title">沙特客户见证</h2>
+        <p class="text-slate-400 mb-16 uppercase tracking-widest text-xs font-bold text-center" data-i18n="testimonials.subtitle">Social Proof From Riyadh to Jeddah</p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="testimonials-grid"></div>
       </div>
     </section>
@@ -378,20 +378,20 @@
         <div class="bg-blue-900 rounded-[40px] p-12 md:p-20 text-white flex flex-col md:flex-row items-center justify-between shadow-2xl overflow-hidden relative">
           <div class="absolute left-0 bottom-0 opacity-10"><i class="fas fa-handshake text-[20rem]"></i></div>
           <div class="relative z-10 max-w-xl text-left">
-            <h2 class="text-4xl font-extrabold mb-6">寻求长期战略合作伙伴</h2>
-            <p class="text-blue-200 text-lg mb-8 leading-relaxed text-left">我们正在寻找致力于深耕沙特市场的长期合作伙伴。无论您是拥有本地展厅资源、清关优势，还是具备成熟的售后服务网络，我们都期待与您建立互信、共赢的供应对接机制，共同定义中沙二手车贸易的新标准。</p>
+            <h2 class="text-4xl font-extrabold mb-6" data-i18n="partner.title">寻求长期战略合作伙伴</h2>
+            <p class="text-blue-200 text-lg mb-8 leading-relaxed text-left" data-i18n="partner.desc">我们正在寻找致力于深耕沙特市场的长期合作伙伴。无论您是拥有本地展厅资源、清关优势，还是具备成熟的售后服务网络，我们都期待与您建立互信、共赢的供应对接机制，共同定义中沙二手车贸易的新标准。</p>
             <div class="flex flex-wrap gap-4">
               <a href="https://wa.me/8617600906021" class="bg-gold hover:bg-yellow-600 text-blue-900 px-10 py-4 rounded-full font-bold transition flex items-center btn-active">
-                <i class="fab fa-whatsapp mr-2 text-xl"></i> 开启合作洽谈
+                <i class="fab fa-whatsapp mr-2 text-xl"></i> <span data-i18n="partner.cta">开启合作洽谈</span>
               </a>
             </div>
           </div>
           <div class="mt-12 md:mt-0 relative z-10 bg-white p-10 rounded-3xl text-gray-900 w-full md:w-96 shadow-xl text-center">
             <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fab fa-whatsapp text-4xl"></i></div>
-            <h4 class="text-xl font-bold mb-2">即时对接洽谈</h4>
-            <p class="text-gray-500 text-sm mb-8 leading-relaxed">点击下方按钮，直接通过 WhatsApp 与我们的海外市场负责人取得联系，获取最新价格单及合作协议。</p>
-            <a href="https://wa.me/8617600906021" class="block w-full wa-btn text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl transition tracking-wide btn-active">WhatsApp 在线联系</a>
-            <p class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest font-bold">Response within 2 hours</p>
+            <h4 class="text-xl font-bold mb-2" data-i18n="partner.card.title">即时对接洽谈</h4>
+            <p class="text-gray-500 text-sm mb-8 leading-relaxed" data-i18n="partner.card.desc">点击下方按钮，直接通过 WhatsApp 与我们的海外市场负责人取得联系，获取最新价格单及合作协议。</p>
+            <a href="https://wa.me/8617600906021" class="block w-full wa-btn text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl transition tracking-wide btn-active" data-i18n="partner.card.button">WhatsApp 在线联系</a>
+            <p class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest font-bold" data-i18n="partner.card.response">Response within 2 hours</p>
           </div>
         </div>
       </div>
@@ -402,8 +402,8 @@
   <main id="inventory-page" class="page-content hidden-page pt-20 pb-32">
     <div class="container mx-auto px-6 text-left">
       <div class="mb-12 text-left">
-        <h2 class="text-4xl font-extrabold text-blue-900">所有现车库存</h2>
-        <p class="text-gray-500 mt-2 uppercase tracking-widest text-sm font-bold">Live Inventory - Available for Immediate Export</p>
+        <h2 class="text-4xl font-extrabold text-blue-900" data-i18n="inventory.page.title">所有现车库存</h2>
+        <p class="text-gray-500 mt-2 uppercase tracking-widest text-sm font-bold" data-i18n="inventory.page.subtitle">Live Inventory - Available for Immediate Export</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="all-inventory-grid"></div>
     </div>
@@ -412,7 +412,7 @@
   <!-- 车辆详情页面 -->
   <main id="car-detail-page" class="page-content hidden-page pt-10 pb-32">
     <div class="container mx-auto px-6 text-left">
-      <button onclick="navigateTo('inventory')" class="mb-8 text-blue-900 font-bold flex items-center hover:text-gold transition"><i class="fas fa-arrow-left mr-2"></i> 返回库存列表</button>
+      <button onclick="navigateTo('inventory')" class="mb-8 text-blue-900 font-bold flex items-center hover:text-gold transition"><i class="fas fa-arrow-left mr-2"></i> <span data-i18n="car.back">返回库存列表</span></button>
       <div id="car-detail-content"></div>
     </div>
   </main>
@@ -420,7 +420,7 @@
   <!-- 客户见证详情页面 -->
   <main id="testimonial-detail-page" class="page-content hidden-page pt-10 pb-32">
     <div class="container mx-auto px-6 text-left">
-      <button onclick="navigateTo('home')" class="mb-8 text-blue-900 font-bold flex items-center hover:text-gold transition"><i class="fas fa-arrow-left mr-2"></i> 返回首页</button>
+      <button onclick="navigateTo('home')" class="mb-8 text-blue-900 font-bold flex items-center hover:text-gold transition"><i class="fas fa-arrow-left mr-2"></i> <span data-i18n="testimonial.back">返回首页</span></button>
       <div id="testimonial-detail-content"></div>
     </div>
   </main>
@@ -429,30 +429,30 @@
   <main id="admin-page" class="page-content hidden-page pt-10 pb-32 bg-gray-100 min-h-screen text-left">
     <div class="container mx-auto px-6">
       <div class="flex justify-between items-center mb-10">
-        <h1 class="text-3xl font-black text-blue-900 underline decoration-gold decoration-4">中汽出海 - 管理后台</h1>
+        <h1 class="text-3xl font-black text-blue-900 underline decoration-gold decoration-4" data-i18n="admin.title">中汽出海 - 管理后台</h1>
         <div class="flex items-center gap-3">
-          <button onclick="exportStaticSnippet()" class="bg-blue-900 text-white px-5 py-2 rounded-xl font-bold hover:bg-blue-800">导出到 GitHub</button>
-          <button onclick="clearLocalDraft()" class="bg-white text-gray-800 px-5 py-2 rounded-xl font-bold border hover:bg-gray-50">清空本地草稿</button>
-          <button onclick="navigateTo('home')" class="bg-gray-800 text-white px-6 py-2 rounded-xl font-bold">退出后台</button>
+          <button onclick="exportStaticSnippet()" class="bg-blue-900 text-white px-5 py-2 rounded-xl font-bold hover:bg-blue-800" data-i18n="admin.export">导出到 GitHub</button>
+          <button onclick="clearLocalDraft()" class="bg-white text-gray-800 px-5 py-2 rounded-xl font-bold border hover:bg-gray-50" data-i18n="admin.clear">清空本地草稿</button>
+          <button onclick="navigateTo('home')" class="bg-gray-800 text-white px-6 py-2 rounded-xl font-bold" data-i18n="admin.exit">退出后台</button>
         </div>
       </div>
 
       <div class="grid md:grid-cols-12 gap-8">
         <div class="md:col-span-3 space-y-2">
-          <button onclick="switchAdminTab('cars')" id="tab-cars" class="w-full text-left p-4 rounded-xl font-bold bg-blue-900 text-white shadow-lg">车型管理</button>
-          <button onclick="switchAdminTab('testimonials')" id="tab-testimonials" class="w-full text-left p-4 rounded-xl font-bold bg-white text-gray-700 hover:bg-gray-200 transition">客户见证管理</button>
+          <button onclick="switchAdminTab('cars')" id="tab-cars" class="w-full text-left p-4 rounded-xl font-bold bg-blue-900 text-white shadow-lg" data-i18n="admin.tabs.cars">车型管理</button>
+          <button onclick="switchAdminTab('testimonials')" id="tab-testimonials" class="w-full text-left p-4 rounded-xl font-bold bg-white text-gray-700 hover:bg-gray-200 transition" data-i18n="admin.tabs.testimonials">客户见证管理</button>
         </div>
 
         <div class="md:col-span-9 bg-white p-8 rounded-[2rem] shadow-xl border border-gray-200">
           <div id="admin-cars-panel">
             <div class="flex justify-between items-center mb-6">
-              <h3 class="text-xl font-bold">车辆信息维护</h3>
-              <button onclick="openCarModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-plus mr-2"></i>新增车型</button>
+              <h3 class="text-xl font-bold" data-i18n="admin.cars.title">车辆信息维护</h3>
+              <button onclick="openCarModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-plus mr-2"></i><span data-i18n="admin.cars.add">新增车型</span></button>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left text-sm">
                 <thead class="bg-gray-50 border-b">
-                  <tr><th class="p-4">车型名称</th><th class="p-4">价格</th><th class="p-4">里程</th><th class="p-4">操作</th></tr>
+                  <tr><th class="p-4" data-i18n="admin.cars.columns.name">车型名称</th><th class="p-4" data-i18n="admin.cars.columns.price">价格</th><th class="p-4" data-i18n="admin.cars.columns.mileage">里程</th><th class="p-4" data-i18n="admin.cars.columns.action">操作</th></tr>
                 </thead>
                 <tbody id="admin-cars-list"></tbody>
               </table>
@@ -461,8 +461,8 @@
 
           <div id="admin-testimonials-panel" class="hidden">
             <div class="flex justify-between items-center mb-6">
-              <h3 class="text-xl font-bold">客户见证维护</h3>
-              <button onclick="openTestimonialModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-plus mr-2"></i>新增见证</button>
+              <h3 class="text-xl font-bold" data-i18n="admin.testimonials.title">客户见证维护</h3>
+              <button onclick="openTestimonialModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-plus mr-2"></i><span data-i18n="admin.testimonials.add">新增见证</span></button>
             </div>
             <div id="admin-testimonials-list" class="space-y-4"></div>
           </div>
@@ -482,44 +482,44 @@
   <!-- 车型编辑弹窗 -->
   <div id="car-modal" class="fixed inset-0 bg-black/50 z-[200] hidden items-center justify-center p-4">
     <div class="bg-white rounded-[2.5rem] w-full max-w-4xl max-h-[90vh] overflow-y-auto p-10 shadow-2xl">
-      <h2 class="text-2xl font-bold mb-6 text-blue-900">编辑车型信息</h2>
+      <h2 class="text-2xl font-bold mb-6 text-blue-900" data-i18n="admin.carModal.title">编辑车型信息</h2>
       <form id="car-form" class="grid md:grid-cols-2 gap-x-6 text-left">
         <input type="hidden" id="car-id" />
         <div class="md:col-span-2">
-          <label class="admin-label">车型名称</label>
+          <label class="admin-label" data-i18n="admin.carModal.name">车型名称</label>
           <input type="text" id="car-name" class="admin-input" required />
         </div>
         <div>
-          <label class="admin-label">价格 (USD)</label>
+          <label class="admin-label" data-i18n="admin.carModal.price">价格 (USD)</label>
           <input type="number" id="car-price" class="admin-input" required />
         </div>
         <div>
-          <label class="admin-label">里程</label>
+          <label class="admin-label" data-i18n="admin.carModal.mileage">里程</label>
           <input type="text" id="car-mileage" class="admin-input" />
         </div>
         <div class="md:col-span-2">
-          <label class="admin-label">动力类型</label>
+          <label class="admin-label" data-i18n="admin.carModal.power">动力类型</label>
           <input type="text" id="car-power" class="admin-input" />
         </div>
         <div class="md:col-span-2 mb-4">
-          <label class="admin-label">主图 (点击虚线框 Ctrl+V 粘贴)</label>
+          <label class="admin-label" data-i18n="admin.carModal.mainImage">主图 (点击虚线框 Ctrl+V 粘贴)</label>
           <div id="main-img-zone" class="paste-area p-img-paste" tabindex="0">
-            <span class="text-xs text-gray-400">点击此处粘贴图片</span>
+            <span class="text-xs text-gray-400" data-i18n="admin.paste.single">点击此处粘贴图片</span>
           </div>
         </div>
         <div class="md:col-span-2 mb-4">
-          <label class="admin-label">详情图集 (支持连续粘贴)</label>
+          <label class="admin-label" data-i18n="admin.carModal.gallery">详情图集 (支持连续粘贴)</label>
           <div id="gallery-img-zone" class="paste-area p-img-paste" tabindex="0">
-            <span class="text-xs text-gray-400">点击此处粘贴多张图片</span>
+            <span class="text-xs text-gray-400" data-i18n="admin.paste.multi">点击此处粘贴多张图片</span>
           </div>
         </div>
         <div class="md:col-span-2">
-          <label class="admin-label">车型详情描述</label>
+          <label class="admin-label" data-i18n="admin.carModal.desc">车型详情描述</label>
           <textarea id="car-desc" class="admin-input" style="height: 8rem"></textarea>
         </div>
         <div class="md:col-span-2 flex justify-end space-x-4 pt-6 border-t">
-          <button type="button" onclick="closeModal('car-modal')" class="px-8 py-3 border rounded-xl font-bold">取消</button>
-          <button type="submit" class="px-10 py-3 bg-blue-900 text-white rounded-xl font-bold shadow-lg">保存信息</button>
+          <button type="button" onclick="closeModal('car-modal')" class="px-8 py-3 border rounded-xl font-bold" data-i18n="admin.cancel">取消</button>
+          <button type="submit" class="px-10 py-3 bg-blue-900 text-white rounded-xl font-bold shadow-lg" data-i18n="admin.carModal.save">保存信息</button>
         </div>
       </form>
     </div>
@@ -528,29 +528,29 @@
   <!-- 客户见证编辑弹窗 -->
   <div id="testimonial-modal" class="fixed inset-0 bg-black/50 z-[200] hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 shadow-2xl">
-      <h2 class="text-2xl font-bold mb-6">编辑客户见证</h2>
+      <h2 class="text-2xl font-bold mb-6" data-i18n="admin.testModal.title">编辑客户见证</h2>
       <form id="testimonial-form" class="text-left">
         <input type="hidden" id="test-id" />
-        <label class="admin-label">标题</label>
+        <label class="admin-label" data-i18n="admin.testModal.titleLabel">标题</label>
         <input type="text" id="test-title" class="admin-input" required />
-        <label class="admin-label">日期/地点</label>
+        <label class="admin-label" data-i18n="admin.testModal.meta">日期/地点</label>
         <input type="text" id="test-meta" class="admin-input" />
 
-        <label class="admin-label">封面图 (Ctrl+V 粘贴)</label>
+        <label class="admin-label" data-i18n="admin.testModal.cover">封面图 (Ctrl+V 粘贴)</label>
         <div id="test-img-zone" class="paste-area p-img-paste" tabindex="0">
-          <span class="text-xs text-gray-400">点击此处粘贴图片</span>
+          <span class="text-xs text-gray-400" data-i18n="admin.paste.single">点击此处粘贴图片</span>
         </div>
 
-        <label class="admin-label">详情图集 (支持连续粘贴)</label>
+        <label class="admin-label" data-i18n="admin.testModal.gallery">详情图集 (支持连续粘贴)</label>
         <div id="test-gallery-zone" class="paste-area p-img-paste" tabindex="0">
-          <span class="text-xs text-gray-400">点击此处粘贴多张图片</span>
+          <span class="text-xs text-gray-400" data-i18n="admin.paste.multi">点击此处粘贴多张图片</span>
         </div>
 
-        <label class="admin-label">见证内容</label>
+        <label class="admin-label" data-i18n="admin.testModal.content">见证内容</label>
         <textarea id="test-content" class="admin-input" style="height: 8rem"></textarea>
         <div class="flex justify-end space-x-4 pt-4 border-t">
-          <button type="button" onclick="closeModal('testimonial-modal')" class="px-6 py-2 border rounded-xl font-bold">取消</button>
-          <button type="submit" class="px-8 py-2 bg-green-600 text-white rounded-xl font-bold shadow-lg">保存见证</button>
+          <button type="button" onclick="closeModal('testimonial-modal')" class="px-6 py-2 border rounded-xl font-bold" data-i18n="admin.cancel">取消</button>
+          <button type="submit" class="px-8 py-2 bg-green-600 text-white rounded-xl font-bold shadow-lg" data-i18n="admin.testModal.save">保存见证</button>
         </div>
       </form>
     </div>
@@ -566,26 +566,26 @@
           </div>
           <span class="text-lg font-black text-blue-900 tracking-tighter uppercase">ChinaAutoExport</span>
         </div>
-        <p>致力于将中国高性价比的二手汽车出口至沙特阿拉伯，并提供最真实的车况担保。</p>
+        <p data-i18n="footer.desc">致力于将中国高性价比的二手汽车出口至沙特阿拉伯，并提供最真实的车况担保。</p>
       </div>
       <div>
-        <h4 class="font-bold mb-6 text-blue-900">核心链接</h4>
+        <h4 class="font-bold mb-6 text-blue-900" data-i18n="footer.links.title">核心链接</h4>
         <ul class="space-y-4 text-sm text-gray-500 font-medium">
-          <li><a href="javascript:void(0)" onclick="navigateTo('inventory')" class="hover:text-gold transition">现车库存</a></li>
-          <li><a href="#service" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-gold transition">出口流程</a></li>
-          <li><a href="#trust" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-gold transition">信任保障</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('inventory')" class="hover:text-gold transition" data-i18n="footer.links.inventory">现车库存</a></li>
+          <li><a href="#service" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-gold transition" data-i18n="footer.links.service">出口流程</a></li>
+          <li><a href="#trust" onclick="if(currentPage!=='home') navigateTo('home')" class="hover:text-gold transition" data-i18n="footer.links.trust">信任保障</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="font-bold mb-6 text-blue-900">官方办事处</h4>
+        <h4 class="font-bold mb-6 text-blue-900" data-i18n="footer.office.title">官方办事处</h4>
         <ul class="space-y-4 text-sm text-gray-500 font-medium">
-          <li><i class="fas fa-map-marker-alt mr-2 text-gold"></i> 中国·广州市天河区珠江新城中信大厦</li>
-          <li><i class="fas fa-map-marker-alt mr-2 text-gold"></i> 沙特·利雅得 Olaya 商务区</li>
+          <li><i class="fas fa-map-marker-alt mr-2 text-gold"></i> <span data-i18n="footer.office.cn">中国·广州市天河区珠江新城中信大厦</span></li>
+          <li><i class="fas fa-map-marker-alt mr-2 text-gold"></i> <span data-i18n="footer.office.ksa">沙特·利雅得 Olaya 商务区</span></li>
           <li><i class="fas fa-envelope mr-2 text-gold"></i> yuren.chen.ccc@gmail.com</li>
         </ul>
       </div>
       <div>
-        <h4 class="font-bold mb-6 text-blue-900">关注我们</h4>
+        <h4 class="font-bold mb-6 text-blue-900" data-i18n="footer.follow">关注我们</h4>
         <div class="flex space-x-4 mb-8">
           <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gold hover:text-white transition"><i class="fab fa-tiktok"></i></a>
           <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gold hover:text-white transition"><i class="fab fa-instagram"></i></a>
@@ -594,7 +594,7 @@
       </div>
     </div>
     <div class="container mx-auto px-6 mt-20 pt-8 border-t border-gray-50 text-center text-gray-400 text-[10px] uppercase tracking-widest font-bold">
-      © 2024 中汽出海贸易（深圳）有限公司 | China Auto Export Trade Co., Ltd.
+      <span data-i18n="footer.copyright">© 2024 中汽出海贸易（深圳）有限公司 | China Auto Export Trade Co., Ltd.</span>
     </div>
   </footer>
 
@@ -613,6 +613,448 @@
     const SUPABASE_URL = 'YOUR_SUPABASE_URL';
     const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
     const STORAGE_BUCKET = 'YOUR_STORAGE_BUCKET'; // 例如："images"
+
+    const LANGUAGE_STORAGE_KEY = 'export_lang';
+    const translations = {
+      zh: {
+        'page.title': '中汽出海 - 专注沙特高端二手车 | China Auto Export KSA',
+        announcement: '郑重承诺：车况不符，严格执行 20% 赔付标准 | Verified SGS Inspection',
+        'brand.name': '中汽<span class="text-gold">出海</span>',
+        'nav.home': '主页',
+        'nav.inventory': '现车库存',
+        'nav.trust': '信任保障',
+        'nav.service': '出口服务',
+        'nav.partner': '战略合作',
+        'nav.contact': '联系我们',
+        'hero.badge': '沙特市场首选供应商',
+        'hero.line1': '批量出口交付解决方案',
+        'hero.line2': '进货、整备、清关一站式',
+        'hero.desc': '专注中国新能源及燃油二手车出口。SGS 全车检测，20% 差额赔付，提供从采购、整备到清关的一站式解决方案。',
+        'hero.cta': '浏览现车库',
+        'hero.card1.title': '20% 赔付承诺',
+        'hero.card1.desc': '检测不符立即赔付',
+        'hero.card2.title': 'SGS 联名报告',
+        'hero.card2.desc': '第三方客观检测',
+        'hero.card3.title': '中东气候整备',
+        'hero.card3.desc': '空调制冷系统强化',
+        'hero.card4.title': '清关手续全包',
+        'hero.card4.desc': '沙特各大港口直通',
+        'inventory.guide.title': '没有您想要找的车？',
+        'inventory.guide.desc': '联系我们，依托强大的供应链能力与深厚的行业积累，我们为您提供全品牌精准寻车、实时比价及全流程出口整备，助您锁定极具价格竞争力的优质车源。',
+        'inventory.guide.cta': '咨询车型报价',
+        'inventory.guide.message': '您好，我想咨询具体车型的最优报价。',
+        'inventory.featured.title': '爆款车型',
+        'inventory.featured.subtitle': 'Export-ready vehicles with localized specs',
+        'inventory.featured.more': '更多车型',
+        'trust.title': 'The Trust Protocol <br />信任协议书',
+        'trust.item1.title': '20% 赔付惩罚机制',
+        'trust.item1.desc': '如果我们提供的 SGS 检测报告与您的最终检车结果在“重大事故、火烧、泡水”上存在偏差，我们承诺按成交价的 20% 现汇赔付，并全额退款退车。',
+        'trust.item2.title': '透明供应链实录',
+        'trust.item2.desc': '客户可通过 WhatsApp 实时接收车辆从“装柜、离港、在途、清关”的所有单据照片 and 视频录影。',
+        'trust.item3.title': '沙特本地化技术优化',
+        'trust.item3.desc': '针对中东 50°C+ 的高温环境，我们对每一台车进行空调冷凝器清洗、防紫外线隔热膜贴膜及易损塑料件加固。',
+        'trust.image.alt': '商务协作',
+        'trust.why.title': '为什么信任我们？',
+        'trust.why.quote': '"在跨境交易中，信任是比金子更贵的资产。我们不是在卖车，而是在沙特建立一个长期可信赖的汽车供应链枢纽。"',
+        'service.title': '出口流程一站式服务',
+        'service.item1': '全市场采购',
+        'service.item2': '高温定制整备',
+        'service.item3': '清关手续代办',
+        'service.item4': '多式联运直达',
+        'testimonials.title': '沙特客户见证',
+        'testimonials.subtitle': 'Social Proof From Riyadh to Jeddah',
+        'partner.title': '寻求长期战略合作伙伴',
+        'partner.desc': '我们正在寻找致力于深耕沙特市场的长期合作伙伴。无论您是拥有本地展厅资源、清关优势，还是具备成熟的售后服务网络，我们都期待与您建立互信、共赢的供应对接机制，共同定义中沙二手车贸易的新标准。',
+        'partner.cta': '开启合作洽谈',
+        'partner.card.title': '即时对接洽谈',
+        'partner.card.desc': '点击下方按钮，直接通过 WhatsApp 与我们的海外市场负责人取得联系，获取最新价格单及合作协议。',
+        'partner.card.button': 'WhatsApp 在线联系',
+        'partner.card.response': 'Response within 2 hours',
+        'inventory.page.title': '所有现车库存',
+        'inventory.page.subtitle': 'Live Inventory - Available for Immediate Export',
+        'car.back': '返回库存列表',
+        'testimonial.back': '返回首页',
+        'car.mileage': '里程',
+        'car.power': '动力',
+        'car.detail.cta': 'WhatsApp Inquiry',
+        'car.detail.notfound': '未找到该车型。',
+        'testimonial.detail.notfound': '未找到该见证内容。',
+        'car.inquiry': '咨询车型: {name}',
+        'aria.whatsapp': 'WhatsApp',
+        'admin.title': '中汽出海 - 管理后台',
+        'admin.export': '导出到 GitHub',
+        'admin.clear': '清空本地草稿',
+        'admin.exit': '退出后台',
+        'admin.tabs.cars': '车型管理',
+        'admin.tabs.testimonials': '客户见证管理',
+        'admin.cars.title': '车辆信息维护',
+        'admin.cars.add': '新增车型',
+        'admin.cars.columns.name': '车型名称',
+        'admin.cars.columns.price': '价格',
+        'admin.cars.columns.mileage': '里程',
+        'admin.cars.columns.action': '操作',
+        'admin.testimonials.title': '客户见证维护',
+        'admin.testimonials.add': '新增见证',
+        'admin.carModal.title': '编辑车型信息',
+        'admin.carModal.name': '车型名称',
+        'admin.carModal.price': '价格 (USD)',
+        'admin.carModal.mileage': '里程',
+        'admin.carModal.power': '动力类型',
+        'admin.carModal.mainImage': '主图 (点击虚线框 Ctrl+V 粘贴)',
+        'admin.carModal.gallery': '详情图集 (支持连续粘贴)',
+        'admin.carModal.desc': '车型详情描述',
+        'admin.carModal.save': '保存信息',
+        'admin.testModal.title': '编辑客户见证',
+        'admin.testModal.titleLabel': '标题',
+        'admin.testModal.meta': '日期/地点',
+        'admin.testModal.cover': '封面图 (Ctrl+V 粘贴)',
+        'admin.testModal.gallery': '详情图集 (支持连续粘贴)',
+        'admin.testModal.content': '见证内容',
+        'admin.testModal.save': '保存见证',
+        'admin.cancel': '取消',
+        'admin.paste.single': '点击此处粘贴图片',
+        'admin.paste.multi': '点击此处粘贴多张图片',
+        'admin.actions.edit': '编辑',
+        'admin.actions.delete': '删除',
+        'admin.confirm.delete': '确定删除？',
+        'admin.error.delete': '删除失败，请查看控制台。',
+        'admin.error.save': '保存失败，请查看控制台。',
+        'admin.error.paste': '粘贴图片失败：请打开控制台查看错误。',
+        'admin.copy.success': '已复制到剪贴板。你可以把 cars/testimonials 写入 JSON 文件，或用于静态部署。',
+        'admin.copy.fail': '复制失败：请手动从控制台获取 JSON。',
+        'admin.clear.confirm': '确定清空本地草稿（localStorage）？',
+        'admin.clear.done': '已清空。',
+        'placeholder.brand': 'China Auto Export KSA',
+        'placeholder.image': 'Image placeholder (replace in admin)',
+        'footer.desc': '致力于将中国高性价比的二手汽车出口至沙特阿拉伯，并提供最真实的车况担保。',
+        'footer.links.title': '核心链接',
+        'footer.links.inventory': '现车库存',
+        'footer.links.service': '出口流程',
+        'footer.links.trust': '信任保障',
+        'footer.office.title': '官方办事处',
+        'footer.office.cn': '中国·广州市天河区珠江新城中信大厦',
+        'footer.office.ksa': '沙特·利雅得 Olaya 商务区',
+        'footer.follow': '关注我们',
+        'footer.copyright': '© 2024 中汽出海贸易（深圳）有限公司 | China Auto Export Trade Co., Ltd.'
+      },
+      en: {
+        'page.title': 'China Auto Export KSA | Premium Used Cars',
+        announcement: 'Commitment: if vehicle condition mismatches, we enforce a 20% compensation standard | Verified SGS Inspection',
+        'brand.name': 'China Auto <span class="text-gold">Export</span>',
+        'nav.home': 'Home',
+        'nav.inventory': 'Inventory',
+        'nav.trust': 'Trust',
+        'nav.service': 'Export Services',
+        'nav.partner': 'Partnership',
+        'nav.contact': 'Contact Us',
+        'hero.badge': 'Top Supplier for the Saudi Market',
+        'hero.line1': 'Bulk Export Delivery Solutions',
+        'hero.line2': 'Sourcing, Reconditioning & Customs — One Stop',
+        'hero.desc': 'Focused on exporting China NEV and fuel used cars. SGS full inspection, 20% compensation guarantee, and a one‑stop solution from sourcing and reconditioning to customs clearance.',
+        'hero.cta': 'Browse Inventory',
+        'hero.card1.title': '20% Compensation Guarantee',
+        'hero.card1.desc': 'Mismatch paid immediately',
+        'hero.card2.title': 'SGS Co-branded Report',
+        'hero.card2.desc': 'Independent inspection',
+        'hero.card3.title': 'Middle East Reconditioning',
+        'hero.card3.desc': 'Enhanced A/C cooling system',
+        'hero.card4.title': 'Full Customs Handling',
+        'hero.card4.desc': 'Direct to major Saudi ports',
+        'inventory.guide.title': 'Can’t find the car you’re looking for?',
+        'inventory.guide.desc': 'Contact us. Backed by a strong supply chain and deep industry experience, we provide precise sourcing, real-time price comparison, and full export reconditioning to secure competitive inventory.',
+        'inventory.guide.cta': 'Request a Quote',
+        'inventory.guide.message': 'Hi, I am looking for a specific car model with the best price.',
+        'inventory.featured.title': 'Featured Models',
+        'inventory.featured.subtitle': 'Export-ready vehicles with localized specs',
+        'inventory.featured.more': 'More Models',
+        'trust.title': 'The Trust Protocol <br />Trust Agreement',
+        'trust.item1.title': '20% Penalty Mechanism',
+        'trust.item1.desc': 'If our SGS report differs from your final inspection on major accidents, fire, or flood damage, we compensate 20% of the transaction price and offer a full refund.',
+        'trust.item2.title': 'Transparent Supply Chain Logs',
+        'trust.item2.desc': 'Receive real-time document photos and videos via WhatsApp from loading, departure, in-transit, to clearance.',
+        'trust.item3.title': 'Saudi Localized Optimization',
+        'trust.item3.desc': 'For 50°C+ heat, we reinforce A/C condensers, apply UV insulation film, and strengthen vulnerable plastic parts.',
+        'trust.image.alt': 'Business collaboration',
+        'trust.why.title': 'Why Trust Us?',
+        'trust.why.quote': '"In cross-border trade, trust is more valuable than gold. We are not just selling cars; we are building a long-term reliable automotive supply hub in Saudi Arabia."',
+        'service.title': 'One-stop Export Process',
+        'service.item1': 'Market-wide Sourcing',
+        'service.item2': 'High-temperature Reconditioning',
+        'service.item3': 'Customs Clearance Handling',
+        'service.item4': 'Multimodal Delivery',
+        'testimonials.title': 'Saudi Customer Stories',
+        'testimonials.subtitle': 'Social Proof From Riyadh to Jeddah',
+        'partner.title': 'Seeking Long-term Strategic Partners',
+        'partner.desc': 'We are looking for partners committed to the Saudi market. Whether you have showrooms, clearance advantages, or an after-sales network, we want to build a trusted, win‑win supply partnership and set new standards.',
+        'partner.cta': 'Start Partnership',
+        'partner.card.title': 'Instant Business Connection',
+        'partner.card.desc': 'Click below to contact our overseas market lead via WhatsApp for the latest price list and cooperation agreement.',
+        'partner.card.button': 'WhatsApp Contact',
+        'partner.card.response': 'Response within 2 hours',
+        'inventory.page.title': 'Full Inventory',
+        'inventory.page.subtitle': 'Live Inventory - Available for Immediate Export',
+        'car.back': 'Back to Inventory',
+        'testimonial.back': 'Back to Home',
+        'car.mileage': 'Mileage',
+        'car.power': 'Power',
+        'car.detail.cta': 'WhatsApp Inquiry',
+        'car.detail.notfound': 'Vehicle not found.',
+        'testimonial.detail.notfound': 'Testimonial not found.',
+        'car.inquiry': 'Inquiry: {name}',
+        'aria.whatsapp': 'WhatsApp',
+        'admin.title': 'China Auto Export - Admin',
+        'admin.export': 'Export to GitHub',
+        'admin.clear': 'Clear Local Draft',
+        'admin.exit': 'Exit Admin',
+        'admin.tabs.cars': 'Vehicle Management',
+        'admin.tabs.testimonials': 'Testimonials Management',
+        'admin.cars.title': 'Vehicle Information',
+        'admin.cars.add': 'Add Vehicle',
+        'admin.cars.columns.name': 'Model',
+        'admin.cars.columns.price': 'Price',
+        'admin.cars.columns.mileage': 'Mileage',
+        'admin.cars.columns.action': 'Actions',
+        'admin.testimonials.title': 'Testimonials',
+        'admin.testimonials.add': 'Add Testimonial',
+        'admin.carModal.title': 'Edit Vehicle',
+        'admin.carModal.name': 'Model Name',
+        'admin.carModal.price': 'Price (USD)',
+        'admin.carModal.mileage': 'Mileage',
+        'admin.carModal.power': 'Powertrain',
+        'admin.carModal.mainImage': 'Main Image (click box and paste with Ctrl+V)',
+        'admin.carModal.gallery': 'Gallery (multiple paste supported)',
+        'admin.carModal.desc': 'Vehicle Description',
+        'admin.carModal.save': 'Save Vehicle',
+        'admin.testModal.title': 'Edit Testimonial',
+        'admin.testModal.titleLabel': 'Title',
+        'admin.testModal.meta': 'Date/Location',
+        'admin.testModal.cover': 'Cover Image (Ctrl+V to paste)',
+        'admin.testModal.gallery': 'Gallery (multiple paste supported)',
+        'admin.testModal.content': 'Testimonial Content',
+        'admin.testModal.save': 'Save Testimonial',
+        'admin.cancel': 'Cancel',
+        'admin.paste.single': 'Click here to paste an image',
+        'admin.paste.multi': 'Click here to paste multiple images',
+        'admin.actions.edit': 'Edit',
+        'admin.actions.delete': 'Delete',
+        'admin.confirm.delete': 'Are you sure you want to delete?',
+        'admin.error.delete': 'Delete failed. Check console.',
+        'admin.error.save': 'Save failed. Check console.',
+        'admin.error.paste': 'Paste failed. Check console for details.',
+        'admin.copy.success': 'Copied to clipboard. You can save cars/testimonials to JSON or deploy statically.',
+        'admin.copy.fail': 'Copy failed. Please get JSON from console.',
+        'admin.clear.confirm': 'Clear local drafts (localStorage)?',
+        'admin.clear.done': 'Cleared.',
+        'placeholder.brand': 'China Auto Export KSA',
+        'placeholder.image': 'Image placeholder (replace in admin)',
+        'footer.desc': 'We export high-value used cars from China to Saudi Arabia and provide trustworthy vehicle condition guarantees.',
+        'footer.links.title': 'Key Links',
+        'footer.links.inventory': 'Inventory',
+        'footer.links.service': 'Export Process',
+        'footer.links.trust': 'Trust',
+        'footer.office.title': 'Offices',
+        'footer.office.cn': 'Guangzhou, China · CITIC Plaza, Zhujiang New Town',
+        'footer.office.ksa': 'Riyadh, Saudi Arabia · Olaya Business District',
+        'footer.follow': 'Follow Us',
+        'footer.copyright': '© 2024 China Auto Export Trade Co., Ltd.'
+      },
+      ar: {
+        'page.title': 'تصدير السيارات الصينية | سيارات مستعملة فاخرة',
+        announcement: 'التزامنا: عند عدم تطابق حالة السيارة نطبق تعويضًا بنسبة 20% | فحص SGS معتمد',
+        'brand.name': 'تصدير السيارات <span class="text-gold">الصينية</span>',
+        'nav.home': 'الرئيسية',
+        'nav.inventory': 'المخزون',
+        'nav.trust': 'الثقة',
+        'nav.service': 'خدمات التصدير',
+        'nav.partner': 'الشراكات',
+        'nav.contact': 'تواصل معنا',
+        'hero.badge': 'المورّد الأول لسوق السعودية',
+        'hero.line1': 'حلول تسليم تصدير بالجملة',
+        'hero.line2': 'توريد، تجهيز، وتخليص — من مكان واحد',
+        'hero.desc': 'متخصصون في تصدير سيارات الطاقة الجديدة والبنزين المستعملة من الصين. فحص SGS شامل، وتعويض 20%، وحل متكامل من الشراء والتجهيز إلى التخليص.',
+        'hero.cta': 'تصفح المخزون',
+        'hero.card1.title': 'ضمان تعويض 20%',
+        'hero.card1.desc': 'تعويض فوري عند عدم التطابق',
+        'hero.card2.title': 'تقرير مشترك مع SGS',
+        'hero.card2.desc': 'فحص مستقل وموضوعي',
+        'hero.card3.title': 'تجهيز مناخي للشرق الأوسط',
+        'hero.card3.desc': 'تعزيز نظام تبريد المكيف',
+        'hero.card4.title': 'تخليص جمركي كامل',
+        'hero.card4.desc': 'شحن مباشر لأهم موانئ السعودية',
+        'inventory.guide.title': 'لم تجد السيارة التي تبحث عنها؟',
+        'inventory.guide.desc': 'تواصل معنا. بدعم من سلسلة توريد قوية وخبرة عميقة، نقدم بحثًا دقيقًا عن السيارات، ومقارنة أسعار فورية، وتجهيزًا كاملاً للتصدير لضمان أفضل الأسعار.',
+        'inventory.guide.cta': 'طلب عرض سعر',
+        'inventory.guide.message': 'مرحبًا، أود الاستفسار عن أفضل سعر لطراز سيارة محدد.',
+        'inventory.featured.title': 'الطرازات المميزة',
+        'inventory.featured.subtitle': 'مركبات جاهزة للتصدير بمواصفات محلية',
+        'inventory.featured.more': 'المزيد من الطرازات',
+        'trust.title': 'بروتوكول الثقة <br />اتفاقية الثقة',
+        'trust.item1.title': 'آلية تعويض 20%',
+        'trust.item1.desc': 'إذا اختلف تقرير SGS عن فحصكم النهائي بشأن الحوادث الكبيرة أو الحريق أو الغمر، نعوض بنسبة 20% ونرد المبلغ بالكامل.',
+        'trust.item2.title': 'سجل سلسلة توريد شفاف',
+        'trust.item2.desc': 'استلام صور وفيديوهات المستندات عبر WhatsApp من التحميل وحتى التخليص.',
+        'trust.item3.title': 'تحسينات محلية للسعودية',
+        'trust.item3.desc': 'لمناخ 50° م+ نعزز المكثفات ونضيف عزلًا ضد الأشعة فوق البنفسجية ونقوي الأجزاء البلاستيكية الضعيفة.',
+        'trust.image.alt': 'تعاون أعمال',
+        'trust.why.title': 'لماذا تثق بنا؟',
+        'trust.why.quote': '"في التجارة العابرة للحدود، الثقة أغلى من الذهب. نحن لا نبيع سيارات فقط؛ نحن نبني مركز توريد موثوقًا طويل الأمد في السعودية."',
+        'service.title': 'خدمة تصدير متكاملة',
+        'service.item1': 'توريد من السوق بالكامل',
+        'service.item2': 'تجهيز لدرجات الحرارة العالية',
+        'service.item3': 'إجراءات التخليص الجمركي',
+        'service.item4': 'توصيل متعدد الوسائط',
+        'testimonials.title': 'قصص عملائنا في السعودية',
+        'testimonials.subtitle': 'Social Proof From Riyadh to Jeddah',
+        'partner.title': 'نبحث عن شركاء استراتيجيين على المدى الطويل',
+        'partner.desc': 'نبحث عن شركاء ملتزمين بالسوق السعودي. سواء لديكم صالات عرض أو مزايا تخليص أو شبكة خدمات ما بعد البيع، نرحب ببناء شراكة توريد موثوقة ومربحة للطرفين.',
+        'partner.cta': 'بدء شراكة',
+        'partner.card.title': 'تواصل فوري للأعمال',
+        'partner.card.desc': 'اضغط أدناه للتواصل عبر WhatsApp مع مسؤول السوق الخارجي للحصول على أحدث قائمة أسعار واتفاقية التعاون.',
+        'partner.card.button': 'تواصل عبر WhatsApp',
+        'partner.card.response': 'الرد خلال ساعتين',
+        'inventory.page.title': 'كامل المخزون',
+        'inventory.page.subtitle': 'Live Inventory - Available for Immediate Export',
+        'car.back': 'العودة إلى المخزون',
+        'testimonial.back': 'العودة إلى الرئيسية',
+        'car.mileage': 'المسافة المقطوعة',
+        'car.power': 'القوة',
+        'car.detail.cta': 'استفسار عبر WhatsApp',
+        'car.detail.notfound': 'لم يتم العثور على السيارة.',
+        'testimonial.detail.notfound': 'لم يتم العثور على الشهادة.',
+        'car.inquiry': 'استفسار عن: {name}',
+        'aria.whatsapp': 'واتساب',
+        'admin.title': 'تصدير السيارات الصينية - لوحة الإدارة',
+        'admin.export': 'تصدير إلى GitHub',
+        'admin.clear': 'مسح المسودة المحلية',
+        'admin.exit': 'خروج من الإدارة',
+        'admin.tabs.cars': 'إدارة المركبات',
+        'admin.tabs.testimonials': 'إدارة الشهادات',
+        'admin.cars.title': 'معلومات المركبات',
+        'admin.cars.add': 'إضافة مركبة',
+        'admin.cars.columns.name': 'الطراز',
+        'admin.cars.columns.price': 'السعر',
+        'admin.cars.columns.mileage': 'المسافة',
+        'admin.cars.columns.action': 'الإجراءات',
+        'admin.testimonials.title': 'الشهادات',
+        'admin.testimonials.add': 'إضافة شهادة',
+        'admin.carModal.title': 'تعديل المركبة',
+        'admin.carModal.name': 'اسم الطراز',
+        'admin.carModal.price': 'السعر (دولار)',
+        'admin.carModal.mileage': 'المسافة',
+        'admin.carModal.power': 'نظام الدفع',
+        'admin.carModal.mainImage': 'الصورة الرئيسية (اضغط والصق بـ Ctrl+V)',
+        'admin.carModal.gallery': 'المعرض (يدعم لصق متعدد)',
+        'admin.carModal.desc': 'وصف المركبة',
+        'admin.carModal.save': 'حفظ المركبة',
+        'admin.testModal.title': 'تعديل الشهادة',
+        'admin.testModal.titleLabel': 'العنوان',
+        'admin.testModal.meta': 'التاريخ/الموقع',
+        'admin.testModal.cover': 'صورة الغلاف (لصق عبر Ctrl+V)',
+        'admin.testModal.gallery': 'المعرض (يدعم لصق متعدد)',
+        'admin.testModal.content': 'محتوى الشهادة',
+        'admin.testModal.save': 'حفظ الشهادة',
+        'admin.cancel': 'إلغاء',
+        'admin.paste.single': 'اضغط هنا للصق صورة',
+        'admin.paste.multi': 'اضغط هنا للصق عدة صور',
+        'admin.actions.edit': 'تعديل',
+        'admin.actions.delete': 'حذف',
+        'admin.confirm.delete': 'هل أنت متأكد من الحذف؟',
+        'admin.error.delete': 'فشل الحذف. تحقق من وحدة التحكم.',
+        'admin.error.save': 'فشل الحفظ. تحقق من وحدة التحكم.',
+        'admin.error.paste': 'فشل اللصق. تحقق من وحدة التحكم لمعرفة التفاصيل.',
+        'admin.copy.success': 'تم النسخ إلى الحافظة. يمكنك حفظ السيارات/الشهادات في JSON أو النشر الثابت.',
+        'admin.copy.fail': 'فشل النسخ. يرجى الحصول على JSON من وحدة التحكم.',
+        'admin.clear.confirm': 'مسح المسودات المحلية (localStorage)؟',
+        'admin.clear.done': 'تم المسح.',
+        'placeholder.brand': 'China Auto Export KSA',
+        'placeholder.image': 'Image placeholder (replace in admin)',
+        'footer.desc': 'نصدر سيارات مستعملة عالية القيمة من الصين إلى السعودية مع ضمانات موثوقة لحالة السيارة.',
+        'footer.links.title': 'روابط مهمة',
+        'footer.links.inventory': 'المخزون',
+        'footer.links.service': 'إجراءات التصدير',
+        'footer.links.trust': 'الثقة',
+        'footer.office.title': 'المكاتب',
+        'footer.office.cn': 'قوانغتشو، الصين · مبنى CITIC بلازا',
+        'footer.office.ksa': 'الرياض، السعودية · حي العليا للأعمال',
+        'footer.follow': 'تابعنا',
+        'footer.copyright': '© 2024 شركة تصدير السيارات الصينية للتجارة.'
+      }
+    };
+
+    let currentLang = localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'zh';
+    if (!translations[currentLang]) {
+      currentLang = 'zh';
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
+    }
+
+    function t(key) {
+      return translations[currentLang]?.[key] ?? translations.zh[key] ?? key;
+    }
+
+    function applyI18n() {
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n;
+        el.textContent = t(key);
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.dataset.i18nHtml;
+        el.innerHTML = t(key);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+        const key = el.dataset.i18nPlaceholder;
+        el.setAttribute('placeholder', t(key));
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+        const key = el.dataset.i18nAlt;
+        el.setAttribute('alt', t(key));
+      });
+
+      document.title = t('page.title');
+      document.documentElement.lang = currentLang === 'ar' ? 'ar' : currentLang === 'en' ? 'en' : 'zh-CN';
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.body.classList.toggle('rtl', currentLang === 'ar');
+
+      const inventoryLink = document.getElementById('inventory-wa-link');
+      if (inventoryLink) {
+        const msg = t('inventory.guide.message');
+        inventoryLink.href = `https://wa.me/8617600906021?text=${encodeURIComponent(msg)}`;
+      }
+    }
+
+    function refreshCurrentPage() {
+      if (currentPage === 'admin') {
+        renderAdmin();
+        return;
+      }
+      if (currentPage.startsWith('car-')) {
+        renderCarDetail(currentPage.replace('car-', ''));
+        return;
+      }
+      if (currentPage.startsWith('testimonial-')) {
+        renderTestimonialDetail(currentPage.replace('testimonial-', ''));
+        return;
+      }
+      renderFrontend();
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang || 'zh';
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
+      applyI18n();
+      refreshCurrentPage();
+      window.__heroTyped = false;
+      runHeroTypewriter();
+    }
+
+    function initLanguageSwitcher() {
+      const select = document.getElementById('lang-select');
+      if (!select) return;
+      select.value = currentLang;
+      select.addEventListener('change', (e) => {
+        const value = e.target?.value || 'zh';
+        setLanguage(value);
+      });
+    }
 
     const DEFAULT_CARS = [
       {
@@ -878,8 +1320,8 @@
   </defs>
   <rect width="1200" height="800" fill="url(#g)"/>
   <g fill="#ffffff" fill-opacity="0.85" font-family="Inter, Arial" font-weight="800">
-    <text x="70" y="140" font-size="48">China Auto Export KSA</text>
-    <text x="70" y="210" font-size="26" font-weight="600" fill-opacity="0.75">Image placeholder (replace in admin)</text>
+    <text x="70" y="140" font-size="48">${t('placeholder.brand')}</text>
+    <text x="70" y="210" font-size="26" font-weight="600" fill-opacity="0.75">${t('placeholder.image')}</text>
   </g>
   <g transform="translate(70,320)" fill="#ffffff" fill-opacity="0.14">
     <rect x="0" y="0" rx="28" ry="28" width="1060" height="380"/>
@@ -893,7 +1335,7 @@
       const createCarCard = (car) => {
         const priceStr = '$' + Number(car.price || 0).toLocaleString();
         const mileageStr = String(car.mileage || '').trim();
-        const waText = encodeURIComponent(`咨询车型: ${car.name}`);
+        const waText = encodeURIComponent(t('car.inquiry').replace('{name}', car.name || ''));
         const waLink = `https://wa.me/8617600906021?text=${waText}`;
 
         // 入口卡片：图片在上、信息在下（更符合移动端/多数车源站点列表习惯）
@@ -908,7 +1350,7 @@
                 <div class="flex items-end justify-between gap-3">
                   <div class="min-w-0">
                     <div class="text-white text-lg md:text-xl font-extrabold leading-snug line-clamp-2 drop-shadow">${car.name}</div>
-                    ${mileageStr ? `<div class=\"mt-2 text-white/80 text-sm font-semibold drop-shadow\">里程 ${mileageStr}</div>` : ''}
+                    ${mileageStr ? `<div class=\"mt-2 text-white/80 text-sm font-semibold drop-shadow\">${t('car.mileage')} ${mileageStr}</div>` : ''}
                   </div>
                 </div>
               </div>
@@ -921,7 +1363,7 @@
                   <span class="text-2xl font-black text-rose-600">+</span>
                 </div>
 
-                <a href="${waLink}" class="wa-fab wa-fab-shadow w-12 h-12 rounded-full flex items-center justify-center transition hover:scale-105" aria-label="WhatsApp">
+                <a href="${waLink}" class="wa-fab wa-fab-shadow w-12 h-12 rounded-full flex items-center justify-center transition hover:scale-105" aria-label="${t('aria.whatsapp')}">
                   <i class="fab fa-whatsapp text-2xl"></i>
                 </a>
               </div>
@@ -952,13 +1394,13 @@
       const container = document.getElementById('car-detail-content');
       if (!container) return;
       if (!car) {
-        container.innerHTML = '<div class="text-gray-500">未找到该车型。</div>';
+        container.innerHTML = `<div class="text-gray-500">${t('car.detail.notfound')}</div>`;
         return;
       }
 
       const allImages = [car.image, ...(car.gallery || [])].filter(Boolean);
       const priceStr = '$' + Number(car.price || 0).toLocaleString();
-      const waText = encodeURIComponent(`咨询车型: ${car.name}`);
+      const waText = encodeURIComponent(t('car.inquiry').replace('{name}', car.name || ''));
       const waLink = `https://wa.me/8617600906021?text=${waText}`;
 
       container.innerHTML = `
@@ -981,18 +1423,18 @@
 
             <div class="bg-gray-100 rounded-3xl p-8 mb-8 grid grid-cols-2 gap-6 font-bold">
               <div>
-                <p class="text-xs text-gray-400 uppercase">里程</p>
+                <p class="text-xs text-gray-400 uppercase">${t('car.mileage')}</p>
                 <div>${car.mileage || '-'}</div>
               </div>
               <div>
-                <p class="text-xs text-gray-400 uppercase">动力</p>
+                <p class="text-xs text-gray-400 uppercase">${t('car.power')}</p>
                 <div>${car.power || '-'}</div>
               </div>
             </div>
 
             <p class="text-gray-600 leading-relaxed whitespace-pre-wrap">${(car.desc || '').replace(/</g, '&lt;')}</p>
 
-            <a href="${waLink}" class="mt-8 block w-full wa-btn text-white text-center py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl transition btn-active">WhatsApp Inquiry</a>
+            <a href="${waLink}" class="mt-8 block w-full wa-btn text-white text-center py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl transition btn-active">${t('car.detail.cta')}</a>
           </div>
         </div>
       `;
@@ -1003,7 +1445,7 @@
       const container = document.getElementById('testimonial-detail-content');
       if (!container) return;
       if (!test) {
-        container.innerHTML = '<div class="text-gray-500">未找到该见证内容。</div>';
+        container.innerHTML = `<div class="text-gray-500">${t('testimonial.detail.notfound')}</div>`;
         return;
       }
 
@@ -1043,8 +1485,8 @@
             <td class="p-4 font-bold text-left text-rose-600">$${Number(car.price || 0).toLocaleString()}</td>
             <td class="p-4 text-left">${car.mileage || ''}</td>
             <td class="p-4 text-left">
-              <button onclick="openCarModal('${car.id}')" class="text-blue-600 mr-3 font-bold">编辑</button>
-              <button onclick="deleteCar('${car.id}')" class="text-red-600 font-bold">删除</button>
+              <button onclick="openCarModal('${car.id}')" class="text-blue-600 mr-3 font-bold">${t('admin.actions.edit')}</button>
+              <button onclick="deleteCar('${car.id}')" class="text-red-600 font-bold">${t('admin.actions.delete')}</button>
             </td>
           </tr>
         `).join('');
@@ -1061,8 +1503,8 @@
               </div>
             </div>
             <div>
-              <button onclick="openTestimonialModal('${test.id}')" class="text-blue-600 mr-4 font-bold">编辑</button>
-              <button onclick="deleteTestimonial('${test.id}')" class="text-red-600 font-bold">删除</button>
+              <button onclick="openTestimonialModal('${test.id}')" class="text-blue-600 mr-4 font-bold">${t('admin.actions.edit')}</button>
+              <button onclick="deleteTestimonial('${test.id}')" class="text-red-600 font-bold">${t('admin.actions.delete')}</button>
             </div>
           </div>
         `).join('');
@@ -1122,7 +1564,7 @@
             }
           } catch (err) {
             console.error('paste upload failed', err);
-            alert('粘贴图片失败：请打开控制台查看错误。');
+            alert(t('admin.error.paste'));
           }
         });
       });
@@ -1139,7 +1581,7 @@
         </div>
       `).join('');
 
-      const placeholder = zoneId.includes('gallery') ? '点击此处粘贴多张图片' : '点击此处粘贴图片';
+      const placeholder = zoneId.includes('gallery') ? t('admin.paste.multi') : t('admin.paste.single');
       zone.innerHTML = `<div class="img-preview-box">${html}</div>${(images || []).length === 0 ? `<span class="text-xs text-gray-400">${placeholder}</span>` : ''}`;
     }
 
@@ -1200,13 +1642,13 @@
     // CRUD（local 或 Supabase）
     // =========================
     async function deleteCar(id) {
-      if (!confirm('确定删除？')) return;
+      if (!confirm(t('admin.confirm.delete'))) return;
 
       if (sb) {
         const { error } = await sb.from('cars').delete().eq('id', id);
         if (error) {
           console.error('[deleteCar]', error);
-          alert('删除失败，请查看控制台。');
+          alert(t('admin.error.delete'));
           return;
         }
         await refreshCars();
@@ -1220,13 +1662,13 @@
     }
 
     async function deleteTestimonial(id) {
-      if (!confirm('确定删除？')) return;
+      if (!confirm(t('admin.confirm.delete'))) return;
 
       if (sb) {
         const { error } = await sb.from('testimonials').delete().eq('id', id);
         if (error) {
           console.error('[deleteTestimonial]', error);
-          alert('删除失败，请查看控制台。');
+          alert(t('admin.error.delete'));
           return;
         }
         await refreshTestimonials();
@@ -1333,7 +1775,7 @@
         const { error } = await sb.from('cars').upsert(row, { onConflict: 'id' });
         if (error) {
           console.error('[cars upsert]', error);
-          alert('保存失败，请查看控制台。');
+          alert(t('admin.error.save'));
           return;
         }
         await refreshCars();
@@ -1374,7 +1816,7 @@
         const { error } = await sb.from('testimonials').upsert(row, { onConflict: 'id' });
         if (error) {
           console.error('[testimonials upsert]', error);
-          alert('保存失败，请查看控制台。');
+          alert(t('admin.error.save'));
           return;
         }
         await refreshTestimonials();
@@ -1431,22 +1873,22 @@
       const payload = { cars, testimonials };
       const text = JSON.stringify(payload, null, 2);
       navigator.clipboard.writeText(text).then(() => {
-        alert('已复制到剪贴板。你可以把 cars/testimonials 写入 JSON 文件，或用于静态部署。');
+        alert(t('admin.copy.success'));
       }).catch(() => {
-        alert('复制失败：请手动从控制台获取 JSON。');
+        alert(t('admin.copy.fail'));
         console.log(text);
       });
     }
 
     function clearLocalDraft() {
-      if (!confirm('确定清空本地草稿（localStorage）？')) return;
+      if (!confirm(t('admin.clear.confirm'))) return;
       localStorage.removeItem('export_cars');
       localStorage.removeItem('export_tests');
       cars = [...DEFAULT_CARS];
       testimonials = [...DEFAULT_TESTIMONIALS];
       renderAdmin();
       renderFrontend();
-      alert('已清空。');
+      alert(t('admin.clear.done'));
     }
 
     // =========================
@@ -1458,8 +1900,8 @@
       const l2 = document.getElementById('hero-line2');
       if (!l1 || !l2) return;
 
-      const line1 = '批量出口交付解决方案';
-      const line2 = '进货、整备、清关一站式';
+      const line1 = t('hero.line1');
+      const line2 = t('hero.line2');
 
       l1.textContent = '';
       l2.textContent = '';
@@ -1500,6 +1942,8 @@
     async function boot() {
       try {
         await loadData();
+        initLanguageSwitcher();
+        applyI18n();
         initPasteUpload();
         renderFrontend();
         routeByHash();
